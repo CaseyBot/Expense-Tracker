@@ -68,7 +68,7 @@
                                 <rect key="frame" x="29" y="243" width="101" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="$30,000.89">
+                                    <fragment content="$30,000.79">
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="20" name="Lato-Regular"/>

@@ -13,7 +13,7 @@
 		3F08E98028ED05A2002793FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E97E28ED05A2002793FF /* Main.storyboard */; };
 		3F08E98228ED05A5002793FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E98128ED05A5002793FF /* Assets.xcassets */; };
 		3F08E98528ED05A5002793FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E98328ED05A5002793FF /* LaunchScreen.storyboard */; };
-		3F08E99128ED1974002793FF /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E99028ED1973002793FF /* Lato */; };
+		3F08E99328ED21B8002793FF /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E99228ED21B8002793FF /* Lato */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		3F08E98128ED05A5002793FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F08E98428ED05A5002793FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F08E98628ED05A5002793FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F08E99028ED1973002793FF /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Lato; path = ../../../../Downloads/Lato; sourceTree = "<group>"; };
+		3F08E99228ED21B8002793FF /* Lato */ = {isa = PBXFileReference; lastKnownFileType = file; name = Lato; path = ../../../Lato; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				3F08E98128ED05A5002793FF /* Assets.xcassets */,
 				3F08E98328ED05A5002793FF /* LaunchScreen.storyboard */,
 				3F08E98628ED05A5002793FF /* Info.plist */,
-				3F08E99028ED1973002793FF /* Lato */,
+				3F08E99228ED21B8002793FF /* Lato */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -128,8 +128,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F08E99328ED21B8002793FF /* Lato in Resources */,
 				3F08E98528ED05A5002793FF /* LaunchScreen.storyboard in Resources */,
-				3F08E99128ED1974002793FF /* Lato in Resources */,
 				3F08E98228ED05A5002793FF /* Assets.xcassets in Resources */,
 				3F08E98028ED05A2002793FF /* Main.storyboard in Resources */,
 			);
