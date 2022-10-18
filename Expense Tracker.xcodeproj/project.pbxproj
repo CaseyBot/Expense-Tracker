@@ -13,6 +13,7 @@
 		3F08E98028ED05A2002793FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E97E28ED05A2002793FF /* Main.storyboard */; };
 		3F08E98228ED05A5002793FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E98128ED05A5002793FF /* Assets.xcassets */; };
 		3F08E98528ED05A5002793FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E98328ED05A5002793FF /* LaunchScreen.storyboard */; };
+		3F185E6C28FE383500A55483 /* ExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F185E6A28FE383500A55483 /* ExpenseTracker.xcdatamodeld */; };
 		3FA3D62928F62612004A1618 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA3D62828F62612004A1618 /* ExpenseView.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		3F08E98128ED05A5002793FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F08E98428ED05A5002793FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F08E98628ED05A5002793FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F185E6B28FE383500A55483 /* ExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
 		3FA3D62828F62612004A1618 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 				3F08E98628ED05A5002793FF /* Info.plist */,
 				3FA3D62828F62612004A1618 /* ExpenseView.swift */,
 				20A36CCE28F79D4F00EB3DE3 /* Lato-Regular.ttf */,
+				3F185E6A28FE383500A55483 /* ExpenseTracker.xcdatamodeld */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				3F08E97D28ED05A2002793FF /* ViewController.swift in Sources */,
 				3F08E97928ED05A2002793FF /* AppDelegate.swift in Sources */,
 				3F08E97B28ED05A2002793FF /* SceneDelegate.swift in Sources */,
+				3F185E6C28FE383500A55483 /* ExpenseTracker.xcdatamodeld in Sources */,
 				3FA3D62928F62612004A1618 /* ExpenseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +370,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3F185E6A28FE383500A55483 /* ExpenseTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3F185E6B28FE383500A55483 /* ExpenseTracker.xcdatamodel */,
+			);
+			currentVersion = 3F185E6B28FE383500A55483 /* ExpenseTracker.xcdatamodel */;
+			path = ExpenseTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F08E96D28ED05A2002793FF /* Project object */;
 }
