@@ -18,14 +18,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Fetch the data from Core Data to displau in the tableview
         //context.
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 0
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         //cell.delegate = self
-        
+
         return cell
     }
     
@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         homeView.delegate = self
         homeView.dataSource = self
-        func fetchBills()
+        fetchBills()
         // Do any additional setup after loading the view.
     }
 
