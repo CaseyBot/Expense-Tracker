@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20ADB2692904D9F100ADDC01 /* AddExpenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADB2682904D9F100ADDC01 /* AddExpenseController.swift */; };
+		20ADB26B2904E17F00ADDC01 /* AddincomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADB26A2904E17F00ADDC01 /* AddincomeController.swift */; };
+		20ADB26D2905074F00ADDC01 /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADB26C2905074F00ADDC01 /* ExpenseViewController.swift */; };
+		20ADB26F29050C2200ADDC01 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADB26E29050C2200ADDC01 /* ExpenseTableViewCell.swift */; };
 		3F08E97928ED05A2002793FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08E97828ED05A2002793FF /* AppDelegate.swift */; };
 		3F08E97B28ED05A2002793FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08E97A28ED05A2002793FF /* SceneDelegate.swift */; };
 		3F08E97D28ED05A2002793FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08E97C28ED05A2002793FF /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 
 /* Begin PBXFileReference section */
 		20A36CCE28F79D4F00EB3DE3 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "Lato/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		20ADB2682904D9F100ADDC01 /* AddExpenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseController.swift; sourceTree = "<group>"; };
+		20ADB26A2904E17F00ADDC01 /* AddincomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddincomeController.swift; sourceTree = "<group>"; };
+		20ADB26C2905074F00ADDC01 /* ExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
+		20ADB26E29050C2200ADDC01 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		3F08E97528ED05A2002793FF /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F08E97828ED05A2002793FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F08E97A28ED05A2002793FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +79,10 @@
 				3FA3D62828F62612004A1618 /* ExpenseView.swift */,
 				20A36CCE28F79D4F00EB3DE3 /* Lato-Regular.ttf */,
 				3F185E6A28FE383500A55483 /* ExpenseTracker.xcdatamodeld */,
+				20ADB2682904D9F100ADDC01 /* AddExpenseController.swift */,
+				20ADB26A2904E17F00ADDC01 /* AddincomeController.swift */,
+				20ADB26C2905074F00ADDC01 /* ExpenseViewController.swift */,
+				20ADB26E29050C2200ADDC01 /* ExpenseTableViewCell.swift */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -146,11 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20ADB2692904D9F100ADDC01 /* AddExpenseController.swift in Sources */,
 				3F08E97D28ED05A2002793FF /* ViewController.swift in Sources */,
 				3F08E97928ED05A2002793FF /* AppDelegate.swift in Sources */,
+				20ADB26F29050C2200ADDC01 /* ExpenseTableViewCell.swift in Sources */,
 				3F08E97B28ED05A2002793FF /* SceneDelegate.swift in Sources */,
 				3F185E6C28FE383500A55483 /* ExpenseTracker.xcdatamodeld in Sources */,
+				20ADB26D2905074F00ADDC01 /* ExpenseViewController.swift in Sources */,
 				3FA3D62928F62612004A1618 /* ExpenseView.swift in Sources */,
+				20ADB26B2904E17F00ADDC01 /* AddincomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
