@@ -25,6 +25,7 @@ class AddExpenseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchBills()
         // Do any additional setup after loading the view.
     }
@@ -47,6 +48,7 @@ class AddExpenseController: UIViewController {
                 } catch {
                     print("Error saving context \(error)")
                 }
+        self.fetchBills()
     }
     
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){

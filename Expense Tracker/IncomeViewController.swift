@@ -1,24 +1,25 @@
 //
-//  ExpenseViewController.swift
+//  IncomeViewController.swift
 //  Expense Tracker
 //
-//  Created by Sneha Seenuvasavarathan on 10/23/22.
+//  Created by student on 10/23/22.
 //
 
 import UIKit
 import CoreData
-class ExpenseViewController: UIViewController  {
+class IncomeViewController: UIViewController  {
     
-    var bills:[Expense]?
+    var bills:[Income]?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var totalExpenses: UILabel!
-    @IBOutlet weak var expenseTable: UITableView!
+    
+    @IBOutlet weak var incomeTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        expenseTable.delegate = self
-        expenseTable.dataSource = self
+        incomeTable.delegate = self
+        incomeTable.dataSource = self
         fetchBills()
-        expenseTable.reloadData()
+        incomeTable.reloadData()
         // Do any additional setup after loading the view.
         
         
@@ -34,13 +35,13 @@ class ExpenseViewController: UIViewController  {
         
     }
     
-    func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
+    func fetchBills(with request: NSFetchRequest<Income> = Income.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
         do{
             bills = try context.fetch(request)
             DispatchQueue.main.async{
-                self.expenseTable.reloadData()
+                self.incomeTable.reloadData()
             }
         }catch{
             print(error)
@@ -60,7 +61,7 @@ class ExpenseViewController: UIViewController  {
 }
 
 
-extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
+extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -70,12 +71,12 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         return 100
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath)
         
             //cell.delegate = self
-        let exp = cell.viewWithTag(4) as! UILabel
-        let amount = cell.viewWithTag(6) as! UILabel
-        let date = cell.viewWithTag(5) as! UILabel
+        let exp = cell.viewWithTag(7) as! UILabel
+        let amount = cell.viewWithTag(9) as! UILabel
+        let date = cell.viewWithTag(8) as! UILabel
         
         let expense = self.bills![indexPath.row]
         exp.text = expense.title

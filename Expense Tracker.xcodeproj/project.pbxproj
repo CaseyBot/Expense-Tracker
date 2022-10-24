@@ -18,7 +18,7 @@
 		3F08E98228ED05A5002793FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E98128ED05A5002793FF /* Assets.xcassets */; };
 		3F08E98528ED05A5002793FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08E98328ED05A5002793FF /* LaunchScreen.storyboard */; };
 		3F185E6C28FE383500A55483 /* ExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F185E6A28FE383500A55483 /* ExpenseTracker.xcdatamodeld */; };
-		3FA3D62928F62612004A1618 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA3D62828F62612004A1618 /* ExpenseView.swift */; };
+		3F185EF929061A2E00A55483 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185EF829061A2E00A55483 /* IncomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		3F08E98428ED05A5002793FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F08E98628ED05A5002793FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F185E6B28FE383500A55483 /* ExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
-		3FA3D62828F62612004A1618 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
+		3F185EF829061A2E00A55483 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,13 +76,13 @@
 				3F08E98128ED05A5002793FF /* Assets.xcassets */,
 				3F08E98328ED05A5002793FF /* LaunchScreen.storyboard */,
 				3F08E98628ED05A5002793FF /* Info.plist */,
-				3FA3D62828F62612004A1618 /* ExpenseView.swift */,
 				20A36CCE28F79D4F00EB3DE3 /* Lato-Regular.ttf */,
 				3F185E6A28FE383500A55483 /* ExpenseTracker.xcdatamodeld */,
 				20ADB2682904D9F100ADDC01 /* AddExpenseController.swift */,
 				20ADB26A2904E17F00ADDC01 /* AddincomeController.swift */,
 				20ADB26C2905074F00ADDC01 /* ExpenseViewController.swift */,
 				20ADB26E29050C2200ADDC01 /* ExpenseTableViewCell.swift */,
+				3F185EF829061A2E00A55483 /* IncomeViewController.swift */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -161,11 +161,11 @@
 				20ADB2692904D9F100ADDC01 /* AddExpenseController.swift in Sources */,
 				3F08E97D28ED05A2002793FF /* ViewController.swift in Sources */,
 				3F08E97928ED05A2002793FF /* AppDelegate.swift in Sources */,
+				3F185EF929061A2E00A55483 /* IncomeViewController.swift in Sources */,
 				20ADB26F29050C2200ADDC01 /* ExpenseTableViewCell.swift in Sources */,
 				3F08E97B28ED05A2002793FF /* SceneDelegate.swift in Sources */,
 				3F185E6C28FE383500A55483 /* ExpenseTracker.xcdatamodeld in Sources */,
 				20ADB26D2905074F00ADDC01 /* ExpenseViewController.swift in Sources */,
-				3FA3D62928F62612004A1618 /* ExpenseView.swift in Sources */,
 				20ADB26B2904E17F00ADDC01 /* AddincomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

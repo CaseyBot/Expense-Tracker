@@ -4,7 +4,6 @@
 //
 //  Created by student on 10/4/22.
 //
-
 import UIKit
 import CoreData
 
@@ -46,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //context.
         do{
             bills = try context.fetch(request)
-            print(bills[7].title)
+            //print(bills[7].title)
         }catch{
             print(error)
         }
@@ -55,7 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func fetchIncome(with request: NSFetchRequest<Income> = Income.fetchRequest()){
         do{
             incomeBills = try context.fetch(request)
-            print(incomeBills[1].title)
+            //print(incomeBills[1].title)
         }catch{
             print(error)
         }
