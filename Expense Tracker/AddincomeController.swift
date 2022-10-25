@@ -31,6 +31,7 @@ class AddincomeController: UIViewController {
        
         self.bills.append(newIncome)
         saveBills()
+
     }
     func saveBills(){
         do {
@@ -38,6 +39,7 @@ class AddincomeController: UIViewController {
                 } catch {
                     print("Error saving context \(error)")
                 }
+        
     }
     func fetchBills(with request: NSFetchRequest<Income> = Income.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview

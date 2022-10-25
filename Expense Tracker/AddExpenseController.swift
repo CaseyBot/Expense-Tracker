@@ -40,8 +40,25 @@ class AddExpenseController: UIViewController {
        
         self.bills.append(newExpense)
         saveBills()
+        //self.performSegue(withIdentifier: "seg_expense_to_add", sender: self)
+
     }
-    
+    //override func viewDidDisappear(_ animated: Bool){
+      //  let statTab = self.tabBarController?.children[1] as! ExpenseViewController
+        //statTab.expenseTable.reloadData()
+
+        
+    //}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "seg_expense_to_add"{
+            let detailed_view = segue.destination as! ExpenseViewController
+            detailed_view.expenseTable.reloadData()
+
+            
+        }
+    }
     func saveBills(){
         do {
                     try context.save()

@@ -9,11 +9,24 @@ import UIKit
 import CoreData
 class IncomeViewController: UIViewController  {
     
-    var bills:[Income]?
+    var bills:[Income] = []
+    var selectedIn = Income()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var totalExpenses: UILabel!
     
     @IBOutlet weak var incomeTable: UITableView!
+    func reloadData(){
+        DispatchQueue.main.async(execute:{self.incomeTable.reloadData()})
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "IncomeToEdit"{
+            let detailed_view = segue.destination as! EditIncomeController
+            detailed_view.selectedBill = selectedIn
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         incomeTable.delegate = self
@@ -34,7 +47,9 @@ class IncomeViewController: UIViewController  {
        // }catch{}
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        reloadData()
+    }
     func fetchBills(with request: NSFetchRequest<Income> = Income.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
@@ -65,7 +80,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.bills?.count ?? 0
+        return bills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -78,13 +93,39 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         let amount = cell.viewWithTag(9) as! UILabel
         let date = cell.viewWithTag(8) as! UILabel
         
-        let expense = self.bills![indexPath.row]
+        let expense = self.bills[indexPath.row]
         exp.text = expense.title
         amount.text = "\(expense.amount)"
-        date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
+        date.text = "\(expense.date?.formatted(date: .abbreviated, time: .omitted))"
             return cell
         }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+       let expense = self.bills[indexPath.row]
 
+       if editingStyle == UITableViewCell.EditingStyle.delete{
+           incomeTable.beginUpdates()
+           context.delete(expense)
+           //expenseTable.reloadData()
+           do{
+               try context.save()
+               reloadData()
+               //self.expenseTable.deleteRows(at: [indexPath], with: .automatic)
+               
+           }catch {
+               print("Error While deleting")
+           }
+           incomeTable.endUpdates()
+           //tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+           
+
+       }
+   }
+   
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   
+       selectedIn = bills[indexPath.row]
+       self.performSegue(withIdentifier: "IncomeToEdit", sender: self)
+   }
     
     
 }
