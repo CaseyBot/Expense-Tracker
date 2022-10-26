@@ -12,10 +12,12 @@ class IncomeViewController: UIViewController  {
     var bills:[Income] = []
     var selectedIn = Income()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    @IBOutlet weak var totalExpenses: UILabel!
+   
+    @IBOutlet weak var totalIncome: UILabel!
     
     @IBOutlet weak var incomeTable: UITableView!
     func reloadData(){
+        fetchBills()
         DispatchQueue.main.async(execute:{self.incomeTable.reloadData()})
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,6 +35,12 @@ class IncomeViewController: UIViewController  {
         incomeTable.dataSource = self
         fetchBills()
         incomeTable.reloadData()
+        var income = 0.0
+        for incomeBill in bills {
+            income += incomeBill.amount
+        }
+        totalIncome.text = "$\(round(income*100)/100)"
+        
         // Do any additional setup after loading the view.
         
         
@@ -48,6 +56,7 @@ class IncomeViewController: UIViewController  {
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.viewDidLoad()
         reloadData()
     }
     func fetchBills(with request: NSFetchRequest<Income> = Income.fetchRequest()){
@@ -95,7 +104,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         
         let expense = self.bills[indexPath.row]
         exp.text = expense.title
-        amount.text = "\(expense.amount)"
+        amount.text = "$\(round(expense.amount*100)/100)"
         date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
             return cell
         }

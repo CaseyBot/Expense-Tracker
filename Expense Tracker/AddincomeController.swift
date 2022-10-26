@@ -16,7 +16,7 @@ class AddincomeController: UIViewController {
     @IBOutlet weak var incomeDate: UIDatePicker!
     
     var bills:[Income] = []
-    
+    var summary:[Summary] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -29,9 +29,15 @@ class AddincomeController: UIViewController {
         newIncome.title = incomeTitle.text!
         newIncome.amount = Double(incomeAmount.text!) ?? 0.0
         newIncome.date = incomeDate.date
-        
         self.bills.append(newIncome)
         saveBills()
+        let newSummary = Summary(context: self.context)
+        newSummary.title = incomeTitle.text!
+        newSummary.amount = Double(incomeAmount.text!) ?? 0.0
+        newSummary.type = "Income"
+        newSummary.date = incomeDate.date
+        self.summary.append(newSummary)
+        saveSummary()
         createAlert(title:"Added Income",msg:"Your income has been successfully added!")
         _ = navigationController?.popToRootViewController(animated: true)
 
@@ -49,6 +55,24 @@ class AddincomeController: UIViewController {
         //context.
         do{
             bills = try context.fetch(request)
+        }catch{
+            print(error)
+        }
+    }
+    func saveSummary(){
+        do {
+                    try context.save()
+                } catch {
+                    print("Error saving context \(error)")
+                }
+        self.fetchSummary()
+    }
+    
+    func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
+        //Fetch the data from Core Data to displau in the tableview
+        //context.
+        do{
+            summary = try context.fetch(request)
         }catch{
             print(error)
         }
