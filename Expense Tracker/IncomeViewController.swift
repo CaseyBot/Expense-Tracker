@@ -108,8 +108,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
            //expenseTable.reloadData()
            do{
                try context.save()
-               //reloadData()
-               //self.expenseTable.deleteRows(at: [indexPath], with: .automatic)
+
                
            }catch {
                print("Error While deleting")

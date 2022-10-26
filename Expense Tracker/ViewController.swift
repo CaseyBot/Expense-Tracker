@@ -80,7 +80,6 @@ class ViewController: UIViewController {
         do{
             summaryBills = try context.fetch(request)
             summaryBills.sort(by: { $0.date! < $1.date! })
-            print(summaryBills[0].date, summaryBills[1].date)
             DispatchQueue.main.async{
                 self.summaryTable.reloadData()
             }
