@@ -96,7 +96,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         let expense = self.bills[indexPath.row]
         exp.text = expense.title
         amount.text = "\(expense.amount)"
-        date.text = "\(expense.date?.formatted(date: .abbreviated, time: .omitted))"
+        date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
             return cell
         }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -108,7 +108,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
            //expenseTable.reloadData()
            do{
                try context.save()
-               reloadData()
+               //reloadData()
                //self.expenseTable.deleteRows(at: [indexPath], with: .automatic)
                
            }catch {
@@ -116,7 +116,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
            }
            incomeTable.endUpdates()
            //tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-           
+           self.viewDidLoad()
 
        }
    }

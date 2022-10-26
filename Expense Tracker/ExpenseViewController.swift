@@ -7,9 +7,10 @@
 
 import UIKit
 import CoreData
+
 class ExpenseViewController: UIViewController  {
     
-    var bills:[Expense] = []
+    var bills:[Expense]?
     var selectedBill = Expense()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var totalExpenses: UILabel!
@@ -23,7 +24,6 @@ class ExpenseViewController: UIViewController  {
         expenseTable.reloadData()
         // Do any additional setup after loading the view.
         //To Delete Everything in Expenses
-        
         //for object in bills!{
            // context.delete(object)
        // }
@@ -52,7 +52,9 @@ class ExpenseViewController: UIViewController  {
     
     override func viewDidAppear(_ animated: Bool) {
         reloadData()
+        self.expenseTable.reloadData()
     }
+
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
@@ -73,8 +75,7 @@ class ExpenseViewController: UIViewController  {
 extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return bills.count
+        return bills!.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -85,42 +86,53 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         let amount = cell.viewWithTag(6) as! UILabel
         let date = cell.viewWithTag(5) as! UILabel
         
-        let expense = self.bills[indexPath.row]
+        let expense = self.bills![indexPath.row]
         exp.text = expense.title
         amount.text = "\(expense.amount)"
-        date.text = "\(expense.date?.formatted(date: .abbreviated, time: .omitted))"
+        date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
             return cell
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let expense = self.bills[indexPath.row]
+
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         var expense = self.bills![indexPath.row]
+
 
         if editingStyle == UITableViewCell.EditingStyle.delete{
             expenseTable.beginUpdates()
-            context.delete(expense)
-//            bills.remove(at: indexPath.row)
             
+            //self.expenseTable.deleteRows(at: [indexPath], with: .automatic)
+            
+            context.delete(expense)
+
             //expenseTable.reloadData()
             do{
                 try context.save()
 //                fetchBills()
                 reloadData()
-                expenseTable.reloadData()
-                //self.expenseTable.deleteRows(at: [indexPath], with: .automatic)
+                
+                //DispatchQueue.main.async {
+                  //  self.expenseTable.reloadData()
+               // }
+                
+                //self.expenseTable.reloadRows(at: [indexPath], with: .none)
+                
+                //self.expenseTable.deleteSections([indexPath.section], with: .automatic)
                 
             }catch {
                 print("Error While deleting")
             }
             expenseTable.endUpdates()
             //tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            
+            self.viewDidLoad()
 
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        selectedBill = bills[indexPath.row]
+        selectedBill = bills![indexPath.row]
         self.performSegue(withIdentifier: "ExpenseToEdit", sender: self)
+        
     }
 }
