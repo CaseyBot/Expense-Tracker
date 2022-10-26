@@ -21,13 +21,13 @@ class AddExpenseController: UIViewController {
     @IBOutlet weak var expenseType: UITextField!
     
     var bills:[Expense] = []
+    var summary:[Summary] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchBills()
-        // Do any additional setup after loading the view.
+        fetchSummary()
     }
     
 
@@ -37,9 +37,15 @@ class AddExpenseController: UIViewController {
         newExpense.amount = Double(expenseAmount.text!) ?? 0.0
         newExpense.type = expenseType.text!
         newExpense.date = expenseDate.date
-       
         self.bills.append(newExpense)
         saveBills()
+        let newSummary = Summary(context: self.context)
+        newSummary.title = expenseTitle.text!
+        newSummary.amount = Double(expenseAmount.text!) ?? 0.0
+        newSummary.type = "Expense"
+        newSummary.date = expenseDate.date
+        self.summary.append(newSummary)
+        saveSummary()
         //self.performSegue(withIdentifier: "seg_expense_to_add", sender: self)
 
     }
@@ -77,7 +83,24 @@ class AddExpenseController: UIViewController {
             print(error)
         }
     }
+    func saveSummary(){
+        do {
+                    try context.save()
+                } catch {
+                    print("Error saving context \(error)")
+                }
+        self.fetchSummary()
+    }
     
+    func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
+        //Fetch the data from Core Data to displau in the tableview
+        //context.
+        do{
+            summary = try context.fetch(request)
+        }catch{
+            print(error)
+        }
+    }
    
     /*
     // MARK: - Navigation
