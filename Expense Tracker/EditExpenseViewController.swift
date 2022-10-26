@@ -30,6 +30,7 @@ class EditExpenseViewController: UIViewController {
         amount1.text = "\(selectedBill.amount)"
         type1.text = selectedBill.type
         date1.date = selectedBill.date!
+        
     }
     func changeMade(){
         title2 = title1.text!
@@ -54,10 +55,14 @@ class EditExpenseViewController: UIViewController {
         do{
         try context.save()
         }catch{}
-        
+        createAlert(title:"Edited Expense",msg:"Your expense has been successfully editted!")
+
         _ = navigationController?.popToRootViewController(animated: true)
     }
-
+    func createAlert(title: String, msg:String){
+        let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        self.present(alert, animated: true, completion:nil)}
     /*
     // MARK: - Navigation
 

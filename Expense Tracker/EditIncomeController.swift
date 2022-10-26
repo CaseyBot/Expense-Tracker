@@ -54,9 +54,14 @@ class EditIncomeController: UIViewController {
         do{
         try context.save()
         }catch{}
-        
+        createAlert(title:"Editted Income",msg:"Your income has been successfully editted!")
+
         _ = navigationController?.popToRootViewController(animated: true)
     }
+    func createAlert(title: String, msg:String){
+        let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        self.present(alert, animated: true, completion:nil)}
     /*
     // MARK: - Navigation
 

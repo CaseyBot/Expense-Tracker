@@ -25,11 +25,10 @@ class AddExpenseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         fetchBills()
         // Do any additional setup after loading the view.
     }
-    
 
     @IBAction func addExpenseButton(_ sender: Any) {
         let newExpense = Expense(context: self.context)
@@ -40,7 +39,9 @@ class AddExpenseController: UIViewController {
        
         self.bills.append(newExpense)
         saveBills()
-        //self.performSegue(withIdentifier: "seg_expense_to_add", sender: self)
+        createAlert(title:"Added Expense",msg:"Your expense has been successfully added!")
+
+        _ = navigationController?.popToRootViewController(animated: true)
 
     }
     //override func viewDidDisappear(_ animated: Bool){
@@ -49,23 +50,16 @@ class AddExpenseController: UIViewController {
 
         
     //}
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "seg_expense_to_add"{
-            let detailed_view = segue.destination as! ExpenseViewController
-            detailed_view.expenseTable.reloadData()
 
-            
-        }
-    }
     func saveBills(){
         do {
                     try context.save()
+                
                 } catch {
                     print("Error saving context \(error)")
                 }
         self.fetchBills()
+        
     }
     
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
@@ -73,11 +67,16 @@ class AddExpenseController: UIViewController {
         //context.
         do{
             bills = try context.fetch(request)
+            
         }catch{
             print(error)
         }
+        
     }
-    
+    func createAlert(title: String, msg:String){
+        let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        self.present(alert, animated: true, completion:nil)}
    
     /*
     // MARK: - Navigation

@@ -31,6 +31,8 @@ class AddincomeController: UIViewController {
        
         self.bills.append(newIncome)
         saveBills()
+        createAlert(title:"Added Income",msg:"Your income has been successfully added!")
+        _ = navigationController?.popToRootViewController(animated: true)
 
     }
     func saveBills(){
@@ -50,6 +52,10 @@ class AddincomeController: UIViewController {
             print(error)
         }
     }
+    func createAlert(title: String, msg:String){
+        let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        self.present(alert, animated: true, completion:nil)}
     /*
     // MARK: - Navigation
 
