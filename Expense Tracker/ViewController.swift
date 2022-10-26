@@ -44,9 +44,9 @@ class ViewController: UIViewController {
         for bill in expenseBills {
             totalExpense += bill.amount
         }
-        balance.text = "\(totalIncome-totalExpense)"
-        expenseAmount.text = "\(totalExpense)"
-        incomeAmount.text = "\(totalIncome)"
+        balance.text = "$\(round((totalIncome-totalExpense)*100)/100)"
+        expenseAmount.text = "$\(round(totalExpense*100)/100)"
+        incomeAmount.text = "$\(round(totalIncome*100)/100)"
     }
 
     
@@ -80,6 +80,7 @@ class ViewController: UIViewController {
         do{
             summaryBills = try context.fetch(request)
             summaryBills.sort(by: { $0.date! < $1.date! })
+
             DispatchQueue.main.async{
                 self.summaryTable.reloadData()
             }
@@ -110,7 +111,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let expense = self.summaryBills[indexPath.row]
         exp.text = expense.title
         
-        date.text = "\(expense.date?.formatted(date: .abbreviated, time: .omitted))"
+        date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
         if expense.type == "Expense"{
             amount.textColor = .red
             amount.text = "-$\(expense.amount)"
