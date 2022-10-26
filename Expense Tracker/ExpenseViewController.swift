@@ -22,6 +22,11 @@ class ExpenseViewController: UIViewController  {
         expenseTable.dataSource = self
         fetchBills()
         expenseTable.reloadData()
+        var expense = 0.0
+        for expenseBill in bills! {
+            expense += expenseBill.amount
+        }
+        totalExpenses.text = "$\(round(expense*100)/100)"
         // Do any additional setup after loading the view.
         //To Delete Everything in Expenses
         //for object in bills!{
@@ -51,7 +56,7 @@ class ExpenseViewController: UIViewController  {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        reloadData()
+        self.viewDidLoad()
         self.expenseTable.reloadData()
     }
 
@@ -88,7 +93,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         
         let expense = self.bills![indexPath.row]
         exp.text = expense.title
-        amount.text = "\(expense.amount)"
+        amount.text = "$\(expense.amount)"
         date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
             return cell
     }
