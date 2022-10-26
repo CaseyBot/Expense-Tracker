@@ -113,16 +113,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
             //expenseTable.reloadData()
             do{
                 try context.save()
-//                fetchBills()
-                reloadData()
-                
-                //DispatchQueue.main.async {
-                  //  self.expenseTable.reloadData()
-               // }
-                
-                //self.expenseTable.reloadRows(at: [indexPath], with: .none)
-                
-                //self.expenseTable.deleteSections([indexPath.section], with: .automatic)
+
                 
             }catch {
                 print("Error While deleting")

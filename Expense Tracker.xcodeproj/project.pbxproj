@@ -21,6 +21,9 @@
 		3F185EF929061A2E00A55483 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185EF829061A2E00A55483 /* IncomeViewController.swift */; };
 		3F185EFD290769DD00A55483 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185EFC290769DD00A55483 /* EditExpenseViewController.swift */; };
 		3F185EFF2907932C00A55483 /* EditIncomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185EFE2907932C00A55483 /* EditIncomeController.swift */; };
+		3F185F0129090BAB00A55483 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185F0029090BAB00A55483 /* BudgetViewController.swift */; };
+		3F185F0329090C0600A55483 /* AddBudgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185F0229090C0600A55483 /* AddBudgetController.swift */; };
+		3F185F0529090CB300A55483 /* EditBudgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F185F0429090CB300A55483 /* EditBudgetController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		3F185EF829061A2E00A55483 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		3F185EFC290769DD00A55483 /* EditExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseViewController.swift; sourceTree = "<group>"; };
 		3F185EFE2907932C00A55483 /* EditIncomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIncomeController.swift; sourceTree = "<group>"; };
+		3F185F0029090BAB00A55483 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		3F185F0229090C0600A55483 /* AddBudgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetController.swift; sourceTree = "<group>"; };
+		3F185F0429090CB300A55483 /* EditBudgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,9 @@
 				3F185EF829061A2E00A55483 /* IncomeViewController.swift */,
 				3F185EFC290769DD00A55483 /* EditExpenseViewController.swift */,
 				3F185EFE2907932C00A55483 /* EditIncomeController.swift */,
+				3F185F0029090BAB00A55483 /* BudgetViewController.swift */,
+				3F185F0229090C0600A55483 /* AddBudgetController.swift */,
+				3F185F0429090CB300A55483 /* EditBudgetController.swift */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -169,8 +178,11 @@
 				3F08E97928ED05A2002793FF /* AppDelegate.swift in Sources */,
 				3F185EF929061A2E00A55483 /* IncomeViewController.swift in Sources */,
 				20ADB26F29050C2200ADDC01 /* ExpenseTableViewCell.swift in Sources */,
+				3F185F0329090C0600A55483 /* AddBudgetController.swift in Sources */,
 				3F185EFD290769DD00A55483 /* EditExpenseViewController.swift in Sources */,
 				3F185EFF2907932C00A55483 /* EditIncomeController.swift in Sources */,
+				3F185F0529090CB300A55483 /* EditBudgetController.swift in Sources */,
+				3F185F0129090BAB00A55483 /* BudgetViewController.swift in Sources */,
 				3F08E97B28ED05A2002793FF /* SceneDelegate.swift in Sources */,
 				3F185E6C28FE383500A55483 /* ExpenseTracker.xcdatamodeld in Sources */,
 				20ADB26D2905074F00ADDC01 /* ExpenseViewController.swift in Sources */,

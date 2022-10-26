@@ -95,7 +95,7 @@ class AddExpenseController: UIViewController {
     
     func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
-        //context.
+ 
         do{
             summary = try context.fetch(request)
         }catch{
