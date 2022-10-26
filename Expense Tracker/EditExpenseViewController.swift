@@ -57,6 +57,7 @@ class EditExpenseViewController: UIViewController {
         }catch{}
         createAlert(title:"Edited Expense",msg:"Your expense has been successfully editted!")
 
+        
         _ = navigationController?.popToRootViewController(animated: true)
     }
     func createAlert(title: String, msg:String){
