@@ -71,7 +71,7 @@ class BudgetViewController: UIViewController {
             
             let expense = self.bills![indexPath.row]
             exp.text = expense.type
-            amount.text = "\(expense.amount)"
+            amount.text = "$\(expense.amount) left"
                 return cell
         }
 

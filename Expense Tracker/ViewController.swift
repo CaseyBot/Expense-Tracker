@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     func reloadData(){
         fetchBills()
         fetchIncome()
+        fetchSummary()
         DispatchQueue.main.async(execute:{self.summaryTable.reloadData()})
     }
     
@@ -48,7 +49,11 @@ class ViewController: UIViewController {
         expenseAmount.text = "$\(round(totalExpense*100)/100)"
         incomeAmount.text = "$\(round(totalIncome*100)/100)"
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewDidLoad()
+        reloadData()
+    }
     
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
@@ -79,7 +84,7 @@ class ViewController: UIViewController {
         //context.
         do{
             summaryBills = try context.fetch(request)
-            summaryBills.sort(by: { $0.date! < $1.date! })
+            summaryBills.sort(by: { $0.date! > $1.date! })
 
             DispatchQueue.main.async{
                 self.summaryTable.reloadData()

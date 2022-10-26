@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cJ-by-G7H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cJ-by-G7H">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -762,7 +762,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwL-bS-hPn">
-                                                    <rect key="frame" x="229" y="11" width="70" height="21"/>
+                                                    <rect key="frame" x="229" y="11" width="121" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="$350 left">
@@ -807,15 +807,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1s-1f-tWc">
-                                <rect key="frame" x="138" y="230" width="189" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NiP-7n-izh">
-                                <rect key="frame" x="142" y="161" width="189" height="34"/>
+                                <rect key="frame" x="113" y="243" width="189" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -824,22 +817,8 @@
                                     <action selector="title1:" destination="t4y-ma-wDl" eventType="editingDidEnd" id="ZVj-G2-69f"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44k-KE-DH8">
-                                <rect key="frame" x="46" y="161" width="88" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHT-re-kgp">
-                                <rect key="frame" x="36" y="234" width="88" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-4C-nRg">
-                                <rect key="frame" x="193" y="309" width="79" height="31"/>
+                                <rect key="frame" x="168" y="419" width="79" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Edit"/>
@@ -850,6 +829,20 @@
                                     <action selector="editIncome:" destination="DBv-5D-y1F" eventType="touchUpInside" id="y6j-hw-GRl"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1s-1f-tWc">
+                                <rect key="frame" x="113" y="310" width="189" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEy-tS-t4P">
+                                <rect key="frame" x="146" y="149" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DHX-QE-PYH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -873,15 +866,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Budget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X05-Pg-IeU">
-                                <rect key="frame" x="146" y="134" width="123" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMl-GF-bCv">
-                                <rect key="frame" x="168" y="381" width="79" height="31"/>
+                                <rect key="frame" x="168" y="387" width="79" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add"/>
@@ -889,20 +875,27 @@
                                     <action selector="add:" destination="fRb-eK-Qyb" eventType="touchUpInside" id="30h-2D-YN5"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Amount" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-JQ-FMH">
-                                <rect key="frame" x="114" y="299" width="189" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-JQ-FMH">
+                                <rect key="frame" x="113" y="293" width="189" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Amount" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-Ue-v3t">
-                                <rect key="frame" x="104" y="215" width="189" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-Ue-v3t">
+                                <rect key="frame" x="113" y="221" width="189" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Budget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X05-Pg-IeU">
+                                <rect key="frame" x="146" y="135" width="123" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tmg-1T-tWk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
