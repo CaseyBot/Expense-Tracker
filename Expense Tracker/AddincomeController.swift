@@ -16,6 +16,7 @@ class AddincomeController: UIViewController {
     @IBOutlet weak var incomeDate: UIDatePicker!
     
     var bills:[Income] = []
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class AddincomeController: UIViewController {
         newIncome.title = incomeTitle.text!
         newIncome.amount = Double(incomeAmount.text!) ?? 0.0
         newIncome.date = incomeDate.date
-       
+        
         self.bills.append(newIncome)
         saveBills()
         createAlert(title:"Added Income",msg:"Your income has been successfully added!")
