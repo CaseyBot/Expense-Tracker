@@ -18,7 +18,7 @@ class BudgetViewController: UIViewController {
         budgetTable.dataSource = self
         fetchBills()
         budgetTable.reloadData()
-
+        self.budgetTable.separatorStyle = UITableViewCell.SeparatorStyle.none
         // Do any additional setup after loading the view.
     }
     func reloadData(){
@@ -62,7 +62,7 @@ class BudgetViewController: UIViewController {
             return bills!.count
          }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100
+            return 80
         }
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "budgetcell", for: indexPath)
@@ -71,8 +71,16 @@ class BudgetViewController: UIViewController {
             
             let expense = self.bills![indexPath.row]
             exp.text = expense.type
-            amount.text = "\(expense.amount)"
-                return cell
+            amount.text = "\(expense.amount) left"
+            switch indexPath.row % 2 {
+            case 0:
+                cell.backgroundColor = UIColor(red: 244/255.0, green: 243/255.0, blue: 247/255.0, alpha: 1);
+            case 1:
+                cell.backgroundColor = UIColor(red: 251/255.0, green: 251/255.0, blue: 254/255.0, alpha: 1);
+            default:
+                cell.backgroundColor = .white
+            }
+            return cell
         }
 
 
