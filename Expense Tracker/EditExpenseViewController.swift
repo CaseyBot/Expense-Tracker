@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-
+//Create the objects from expense and context, create the variables to insert into the core data, transfer over all of the textfields from the main view
 class EditExpenseViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedBill = Expense()
@@ -19,11 +19,12 @@ class EditExpenseViewController: UIViewController {
     @IBOutlet weak var amount1: UITextField!
     @IBOutlet weak var type1: UITextField!
     @IBOutlet weak var date1: UIDatePicker!
+    //Transfer function from the editChanges button that is clicked
     @IBAction func editChanges(_ sender: Any) {
         changeMade()
         
     }
-
+    //In the override viewDidLoad show the information from the core data for the row selected and change if the user decides to.
     override func viewDidLoad() {
         super.viewDidLoad()
         title1.text = selectedBill.title
@@ -32,6 +33,7 @@ class EditExpenseViewController: UIViewController {
         date1.date = selectedBill.date!
         
     }
+    //Get the text from the labels, request the expense object, search by title then take the first result and change the title, amount, type, and date as to what the user wants. Then saves the context and creates an alert. Send back to the expense controller
     func changeMade(){
         title2 = title1.text!
         amount2 = Double(amount1.text!)!
@@ -58,20 +60,13 @@ class EditExpenseViewController: UIViewController {
         createAlert(title:"Edited Expense",msg:"Your expense has been successfully editted!")
 
         
-        _ = navigationController?.popToRootViewController(animated: true)
+
     }
+    //Create the alert for done and dismiss the the alert when it is clicked
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
+            _=self.navigationController?.popToRootViewController(animated: true)
+        }))
         self.present(alert, animated: true, completion:nil)}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

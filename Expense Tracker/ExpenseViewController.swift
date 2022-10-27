@@ -9,13 +9,13 @@ import UIKit
 import CoreData
 
 class ExpenseViewController: UIViewController  {
-    
+    //Expense entity to change later and context
     var bills:[Expense]?
     var selectedBill = Expense()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var totalExpenses: UILabel!
     @IBOutlet weak var expenseTable: UITableView!
-    
+    //In the viewDidLoad the delegate and datasource are made to self. Reload the data and set expense to 0 while increasing amount. Set to keep the overall amounts up to date
     override func viewDidLoad() {
         super.viewDidLoad()
         expenseTable.delegate = self
@@ -27,24 +27,15 @@ class ExpenseViewController: UIViewController  {
             expense += expenseBill.amount
         }
         totalExpenses.text = "$\(round(expense*100)/100)"
-        // Do any additional setup after loading the view.
-        //To Delete Everything in Expenses
-        //for object in bills!{
-           // context.delete(object)
-       // }
-        
-        //do{
-        //    try context.save()
-       // }catch{}
-        
+
     }
-    
+    //Reload the data for the expense table
     func reloadData(){
         fetchBills()
         DispatchQueue.main.async(execute:{self.expenseTable.reloadData()})
     }
     
-    
+    //Prepare the segue, send the current row to EditExpenseController and set the destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -54,7 +45,7 @@ class ExpenseViewController: UIViewController  {
             
         }
     }
-    
+    //viewDidAppear needed to refresh the view when changes are made and fetch the expense data and table
     override func viewDidAppear(_ animated: Bool) {
         self.viewDidLoad()
         self.expenseTable.reloadData()
@@ -76,7 +67,7 @@ class ExpenseViewController: UIViewController  {
 
 }
 
-
+//Make changes to the table including the size, amount of rows and cell specifications to change the different labels and changing the date format then return the cell
 extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,7 +89,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
     }
 
-
+    //Delete function to swipe to the left then reload the table and core data then reload the data
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          var expense = self.bills![indexPath.row]
 
@@ -124,7 +115,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
 
         }
     }
-    
+    //perform the segue for row selected and send the row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         selectedBill = bills![indexPath.row]
