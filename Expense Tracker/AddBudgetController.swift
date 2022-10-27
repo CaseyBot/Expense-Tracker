@@ -7,29 +7,25 @@
 
 import UIKit
 import CoreData
-
+// transfer current variables from the main view
 class AddBudgetController: UIViewController {
 
     @IBOutlet weak var title1: UITextField!
     
     @IBOutlet weak var amount1: UITextField!
-    
+    //add function button that saves the new budget entity and append it to the expense object then create the alert for the budget that are added then return to the prior controller
     @IBAction func add(_ sender: Any) {
         let newExpense = Budget(context: self.context)
         newExpense.type = title1.text!
         newExpense.amount = Double(amount1.text!) ?? 0.0
         self.bills.append(newExpense)
         saveBills()
-
-        //self.performSegue(withIdentifier: "seg_expense_to_add", sender: self)
-
         createAlert(title:"Added Budget",msg:"Your budget has been successfully added!")
-
-        _ = navigationController?.popToRootViewController(animated: true)
 
 
         
     }
+    //Create the budget entity and context then viewDidLoad and fetch bills function
     var bills:[Budget] = []
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -39,6 +35,7 @@ class AddBudgetController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    //Save the context and fetch the budget entities and save to the core data
     func saveBills(){
         do {
                     try context.save()
@@ -61,20 +58,12 @@ class AddBudgetController: UIViewController {
         }
         
     }
+    //Create alert with done button and navigate back to the budget view controller in main
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
+            _=self.navigationController?.popToRootViewController(animated: true)
+        }))
         self.present(alert, animated: true, completion:nil)}
-
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

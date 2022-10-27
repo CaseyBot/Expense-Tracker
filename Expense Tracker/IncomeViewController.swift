@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 class IncomeViewController: UIViewController  {
-    
+    //Create object variables and context and the reload data function
     var bills:[Income] = []
     var selectedIn = Income()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -20,6 +20,7 @@ class IncomeViewController: UIViewController  {
         fetchBills()
         DispatchQueue.main.async(execute:{self.incomeTable.reloadData()})
     }
+    //Prepare the segue to IncomeToEdit for editing rows
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -29,6 +30,7 @@ class IncomeViewController: UIViewController  {
             
         }
     }
+    //Self delegate and dataSource then update the income amounts and texts
     override func viewDidLoad() {
         super.viewDidLoad()
         incomeTable.delegate = self
@@ -40,21 +42,9 @@ class IncomeViewController: UIViewController  {
             income += incomeBill.amount
         }
         totalIncome.text = "$\(round(income*100)/100)"
-        
-        // Do any additional setup after loading the view.
-        
-        
-        //To Delete Everything in Expenses
-        
-        //for object in bills!{
-           // context.delete(object)
-       // }
-        
-        //do{
-        //    try context.save()
-       // }catch{}
-        
+
     }
+    //Create override for viewDidAppear to reload data and fetch the expense from the core data
     override func viewDidAppear(_ animated: Bool) {
         self.viewDidLoad()
         reloadData()
@@ -71,20 +61,10 @@ class IncomeViewController: UIViewController  {
             print(error)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 
 }
 
-
+//Configure the tableView rows to the expense count and the size of the table cells to 100  then return it
 extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,6 +74,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    //Return the incomeCell with the correct tags and labels, format the date and return the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath)
         
@@ -108,6 +89,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
             return cell
         }
+    //Delete cell when swiped to the left, delete from the core data and end the updates. Reload the data
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        let expense = self.bills[indexPath.row]
 
@@ -128,7 +110,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
 
        }
    }
-   
+   //perforn the segue for the table when a table is selected 
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    
        selectedIn = bills[indexPath.row]

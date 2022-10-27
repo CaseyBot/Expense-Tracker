@@ -19,6 +19,8 @@ class AddExpenseController: UIViewController {
     @IBOutlet weak var expenseDate: UIDatePicker!
     
     @IBOutlet weak var expenseType: UITextField!
+   
+    //Created  object array to later change for expense and for overall summary, and the context
     
     var bills:[Expense] = []
     var summary:[Summary] = []
@@ -29,7 +31,7 @@ class AddExpenseController: UIViewController {
         fetchBills()
         fetchSummary()
     }
-
+    //Button to add expense and save the new expense, then save it to the summary entity to show in the home view
     @IBAction func addExpenseButton(_ sender: Any) {
         let newExpense = Expense(context: self.context)
         newExpense.title = expenseTitle.text!
@@ -50,16 +52,8 @@ class AddExpenseController: UIViewController {
 
         createAlert(title:"Added Expense",msg:"Your expense has been successfully added!")
 
-        _ = navigationController?.popToRootViewController(animated: true)
-
-
     }
-    //override func viewDidDisappear(_ animated: Bool){
-      //  let statTab = self.tabBarController?.children[1] as! ExpenseViewController
-        //statTab.expenseTable.reloadData()
-
-        
-    //}
+    //Save the context expense in the core data
 
     func saveBills(){
         do {
@@ -71,7 +65,7 @@ class AddExpenseController: UIViewController {
         self.fetchBills()
         
     }
-    
+    //Fetch the expense context
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
@@ -83,7 +77,7 @@ class AddExpenseController: UIViewController {
         }
         
     }
-
+//Save into summary entity for the home view
     func saveSummary(){
         do {
                     try context.save()
@@ -92,7 +86,7 @@ class AddExpenseController: UIViewController {
                 }
         self.fetchSummary()
     }
-    
+  //fetch the summary request entity
     func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
  
@@ -102,7 +96,7 @@ class AddExpenseController: UIViewController {
             print(error)
         }
     }
-
+//create an alert for adding expense  and navigate back to the expense view
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
         //alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
@@ -111,15 +105,5 @@ class AddExpenseController: UIViewController {
         }))
         self.present(alert, animated: true, completion:nil)}
 
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

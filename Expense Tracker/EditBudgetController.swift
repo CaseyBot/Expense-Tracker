@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-
+//Create the context variables and the budget entities and title and amount variables from the main budget edit controller
 class EditBudgetController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedBill = Budget()
@@ -16,7 +16,7 @@ class EditBudgetController: UIViewController {
     @IBOutlet weak var title1: UITextField!
     
     @IBOutlet weak var amount1: UITextField!
-    
+    //Edit button to trigget the changeMade() event and show the core data information in the viewDidLoad function within the dit budget controller in main
     @IBAction func edit(_ sender: Any) {
         changeMade()
 
@@ -27,6 +27,7 @@ class EditBudgetController: UIViewController {
         amount1.text = "\(selectedBill.amount)"
         // Do any additional setup after loading the view.
     }
+    //fetch the budget entity by searching through the type, use the first return object, change the type and amount then save this onto the db. Then create an alert and direct back to the budget controller
     func changeMade(){
         title2 = title1.text!
         amount2 = Double(amount1.text!)!
@@ -49,20 +50,14 @@ class EditBudgetController: UIViewController {
         }catch{}
         createAlert(title:"Edited Budget",msg:"Your budget has been successfully editted!")
 
-        _ = navigationController?.popToRootViewController(animated: true)
     }
+    //Create alert with done button and return back to the budget controller
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
+        alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
+            _=self.navigationController?.popToRootViewController(animated: true)
+        }))
         self.present(alert, animated: true, completion:nil)}
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
