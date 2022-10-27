@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         balance.text = "$\(round((totalIncome-totalExpense)*100)/100)"
         expenseAmount.text = "$\(round(totalExpense*100)/100)"
         incomeAmount.text = "$\(round(totalIncome*100)/100)"
+        self.summaryTable.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,7 +104,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return summaryBills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell", for: indexPath)
@@ -118,16 +119,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
         if expense.type == "Expense"{
-            amount.textColor = .red
+            amount.textColor = UIColor(red: 191/255.0, green: 32/255.0, blue: 27/255.0, alpha: 1);
             amount.text = "-$\(expense.amount)"
         }
         else{
-            amount.textColor = .green
+            amount.textColor = UIColor(red: 4/255.0, green: 128/255.0, blue: 49/255.0, alpha: 1)
             amount.text = "+$\(expense.amount)"
         }
+        switch indexPath.row % 2 {
+        case 0:
+            cell.backgroundColor = UIColor(red: 244/255.0, green: 243/255.0, blue: 247/255.0, alpha: 1);
+        case 1:
+            cell.backgroundColor = UIColor(red: 251/255.0, green: 251/255.0, blue: 254/255.0, alpha: 1);
+        default:
+            cell.backgroundColor = .white
+        }
+       
         return cell
         
-        }
+   
+    }
 
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let expense = self.summaryBills[indexPath.row]

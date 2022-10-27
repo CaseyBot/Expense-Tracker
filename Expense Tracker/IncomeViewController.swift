@@ -42,7 +42,21 @@ class IncomeViewController: UIViewController  {
             income += incomeBill.amount
         }
         totalIncome.text = "$\(round(income*100)/100)"
-
+        self.incomeTable.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        // Do any additional setup after loading the view.
+        
+        
+        //To Delete Everything in Expenses
+        
+        //for object in bills!{
+           // context.delete(object)
+       // }
+        
+        //do{
+        //    try context.save()
+       // }catch{}
+        
     }
     //Create override for viewDidAppear to reload data and fetch the expense from the core data
     override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +86,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         return bills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     //Return the incomeCell with the correct tags and labels, format the date and return the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,8 +99,17 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         
         let expense = self.bills[indexPath.row]
         exp.text = expense.title
-        amount.text = "$\(round(expense.amount*100)/100)"
+        amount.text = "+$\(round(expense.amount*100)/100)"
+        amount.textColor = UIColor(red: 4/255.0, green: 128/255.0, blue: 49/255.0, alpha: 1)
         date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
+        switch indexPath.row % 2 {
+        case 0:
+            cell.backgroundColor = UIColor(red: 244/255.0, green: 243/255.0, blue: 247/255.0, alpha: 1);
+        case 1:
+            cell.backgroundColor = UIColor(red: 251/255.0, green: 251/255.0, blue: 254/255.0, alpha: 1);
+        default:
+            cell.backgroundColor = .white
+        }
             return cell
         }
     //Delete cell when swiped to the left, delete from the core data and end the updates. Reload the data

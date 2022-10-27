@@ -19,7 +19,7 @@ class BudgetViewController: UIViewController {
         budgetTable.dataSource = self
         fetchBills()
         budgetTable.reloadData()
-
+        self.budgetTable.separatorStyle = UITableViewCell.SeparatorStyle.none
         // Do any additional setup after loading the view.
     }
     //reloadData reloads the budgetTable
@@ -65,7 +65,7 @@ class BudgetViewController: UIViewController {
             return bills!.count
          }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100
+            return 80
         }
         //Change the labels in budgetcell  then show the core data in these labels in the cells
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,8 +75,19 @@ class BudgetViewController: UIViewController {
             
             let expense = self.bills![indexPath.row]
             exp.text = expense.type
+
             amount.text = "$\(expense.amount) left"
-                return cell
+
+            switch indexPath.row % 2 {
+            case 0:
+                cell.backgroundColor = UIColor(red: 244/255.0, green: 243/255.0, blue: 247/255.0, alpha: 1);
+            case 1:
+                cell.backgroundColor = UIColor(red: 251/255.0, green: 251/255.0, blue: 254/255.0, alpha: 1);
+            default:
+                cell.backgroundColor = .white
+            }
+            return cell
+
         }
 
         //Delete function to delete the current row from the core data then print possible errors and reload the data
