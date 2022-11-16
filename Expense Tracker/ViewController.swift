@@ -6,7 +6,7 @@
 //
 import UIKit
 import CoreData
-
+import SwiftUI
 class ViewController: UIViewController {
     
     @IBOutlet weak var homeView: UITableView!
