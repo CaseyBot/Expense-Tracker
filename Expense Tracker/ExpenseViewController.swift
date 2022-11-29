@@ -79,9 +79,11 @@ class ExpenseViewController: UIViewController  {
 
 //Make changes to the table including the size, amount of rows and cell specifications to change the different labels and changing the date format then return the cell
 extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
-
+    func numberOfSections(in tableView: UITableView) -> Int {
+        bills!.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bills!.count
+        return 1
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -91,7 +93,13 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         let exp = cell.viewWithTag(4) as! UILabel
         let amount = cell.viewWithTag(6) as! UILabel
         let date = cell.viewWithTag(5) as! UILabel
-        
+        expenseTable.layer.cornerRadius = 5
+        cell.layer.cornerRadius = 5
+        cell.layer.shadowOpacity  = 0.23
+        cell.layer.shadowRadius = 4
+        cell.layer.shadowColor =  UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width:0, height: 0)
+        cell.backgroundColor = .clear
         let expense = self.bills![indexPath.row]
         exp.text = expense.title
         amount.text = "-$\(expense.amount)"
@@ -140,5 +148,13 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         selectedBill = bills![indexPath.row]
         self.performSegue(withIdentifier: "ExpenseToEdit", sender: self)
         
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
 }
