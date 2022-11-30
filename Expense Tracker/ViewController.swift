@@ -105,6 +105,20 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if summaryBills.count == 0{
+            let image = UIImage(named: "main")
+            let noDataImage = UIImageView(image: image)
+            noDataImage.frame = CGRect(x: 0, y: 0, width: summaryTable.bounds.width, height: summaryTable.bounds.height)
+            noDataImage.contentMode = .scaleAspectFit
+            noDataImage.layer.opacity = 0.3
+            summaryTable.backgroundView = noDataImage
+            summaryTable.separatorStyle = .none
+
+        }else{
+            summaryTable.backgroundView = nil
+            summaryTable.separatorStyle = .singleLine
+            
+        }
          return summaryBills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

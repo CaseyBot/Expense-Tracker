@@ -91,6 +91,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
             let noDataImage = UIImageView(image: image)
             noDataImage.frame = CGRect(x: 0, y: 0, width: incomeTable.bounds.width, height: incomeTable.bounds.height)
             noDataImage.contentMode = .scaleAspectFit
+            noDataImage.layer.opacity = 0.3
             incomeTable.backgroundView = noDataImage
             incomeTable.separatorStyle = .none
 

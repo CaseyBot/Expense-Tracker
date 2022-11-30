@@ -91,6 +91,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
             let image = UIImage(named: "expense")
             let noDataImage = UIImageView(image: image)
             noDataImage.frame = CGRect(x: 0, y: 0, width: expenseTable.bounds.width, height: expenseTable.bounds.height)
+            noDataImage.layer.opacity = 0.3
             noDataImage.contentMode = .scaleAspectFit
             expenseTable.backgroundView = noDataImage
             expenseTable.separatorStyle = .none
