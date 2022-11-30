@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLx-ex-GnL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="1" y="119" width="414" height="225"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.64945044105431693" green="0.95723757117064956" blue="0.93377433620460004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,16 +30,8 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWS-tV-ACt">
-                                <rect key="frame" x="0.0" y="441" width="414" height="455"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.084797628223896027" green="0.72362297773361206" blue="0.68511843681335449" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.093218348920345306" green="0.49626600742340088" blue="0.48190790414810181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-kA-tTR">
-                                <rect key="frame" x="298" y="171" width="0.0" height="0.0"/>
+                                <rect key="frame" x="298" y="209" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Expenses">
@@ -52,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIP-xe-Hcu">
-                                <rect key="frame" x="141" y="81" width="152" height="25"/>
+                                <rect key="frame" x="131" y="136" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Current Balance">
@@ -66,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0h-cv-xc4">
-                                <rect key="frame" x="46" y="171" width="87" height="26"/>
+                                <rect key="frame" x="46" y="209" width="87" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="↑">
@@ -91,7 +83,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8u-K6-MCO">
-                                <rect key="frame" x="20" y="332" width="191" height="27"/>
+                                <rect key="frame" x="20" y="370" width="191" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Account Summary">
@@ -104,7 +96,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eMc-Yn-UI5">
-                                <rect key="frame" x="20" y="367" width="374" height="446"/>
+                                <rect key="frame" x="20" y="429" width="374" height="384"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -159,7 +151,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHH-gK-aYG">
-                                <rect key="frame" x="286" y="203" width="107" height="24"/>
+                                <rect key="frame" x="286" y="241" width="107" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="$5,345.76">
@@ -172,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwJ-ku-UqV">
-                                <rect key="frame" x="20" y="203" width="139" height="24"/>
+                                <rect key="frame" x="20" y="241" width="139" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="$30,000.79">
@@ -186,14 +178,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$10,000.65" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Tg-M8-ok2">
-                                <rect key="frame" x="150" y="114" width="135" height="32"/>
+                                <rect key="frame" x="140" y="169" width="135" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irW-Ph-Jj3">
-                                <rect key="frame" x="286" y="171" width="97" height="26"/>
+                                <rect key="frame" x="286" y="209" width="97" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="↓ Expense">
@@ -208,20 +200,30 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="C27-mK-7Yk">
-                                <rect key="frame" x="20" y="66" width="59" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0lD-wk-QaR">
-                                <rect key="frame" x="52" y="280" width="330" height="10"/>
+                                <rect key="frame" x="52" y="318" width="330" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="360" id="7E1-jV-oky"/>
                                     <constraint firstAttribute="height" constant="10" id="h4P-nU-f9q"/>
                                 </constraints>
                                 <color key="progressTintColor" red="0.092621572315692902" green="0.51518350839614868" blue="0.10369435697793961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I7-zJ-aWD">
+                                <rect key="frame" x="98" y="49" width="220" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Expense Tracker">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="24" name="Lato-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1G-a9-diD">
-                                <rect key="frame" x="131" y="280" width="152" height="19"/>
+                                <rect key="frame" x="131" y="309" width="152" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="$300 of $1,275 spent">
@@ -237,14 +239,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0lD-wk-QaR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-187" id="5cs-FZ-jbL"/>
+                            <constraint firstItem="0lD-wk-QaR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-154" id="5cs-FZ-jbL"/>
                             <constraint firstItem="0lD-wk-QaR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ht8-Cw-OJD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="a5y-QJ-QfZ"/>
                     <connections>
                         <outlet property="balance" destination="1Tg-M8-ok2" id="SmY-e8-Wc5"/>
-                        <outlet property="bottomHalf" destination="TWS-tV-ACt" id="0px-06-r0c"/>
                         <outlet property="expenseAmount" destination="kHH-gK-aYG" id="zcQ-Hh-uIV"/>
                         <outlet property="homeView" destination="eMc-Yn-UI5" id="8mu-y3-5vT"/>
                         <outlet property="incomeAmount" destination="kwJ-ku-UqV" id="1R7-3B-Aj9"/>
@@ -324,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r73-Xt-4YT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="915"/>
+                                <rect key="frame" x="0.0" y="109" width="445" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.64945044110000005" green="0.95723757119999997" blue="0.93377433620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -356,7 +357,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pAw-Ce-ODy">
                                 <rect key="frame" x="15" y="320" width="374" height="509"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.71971458200000005" green="0.94827073809999995" blue="0.93089950079999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="incomeCell" rowHeight="65" id="zhk-o8-y8O">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="65"/>
@@ -433,6 +434,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="background" destination="r73-Xt-4YT" id="gfd-zJ-45J"/>
                         <outlet property="incomeTable" destination="pAw-Ce-ODy" id="fKe-Al-3kg"/>
                         <outlet property="totalIncome" destination="Qo8-rE-ZdY" id="bKk-RI-UdI"/>
                         <segue destination="DBv-5D-y1F" kind="show" identifier="IncomeToEdit" id="c7S-KI-qk7"/>
@@ -639,7 +641,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUQ-o5-r8U">
-                                <rect key="frame" x="-1" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="-1" y="105" width="551" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.64945044110000005" green="0.95723757119999997" blue="0.93377433620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -655,19 +657,6 @@
                                         <attributes>
                                             <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <font key="NSFont" size="12" name="HelveticaNeue"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPq-ao-Dak">
-                                <rect key="frame" x="19" y="269" width="191" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="All Expenses">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="23"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -695,9 +684,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rvg-TI-ifF">
-                                <rect key="frame" x="19" y="350" width="375" height="476"/>
+                                <rect key="frame" x="19" y="350" width="375" height="463"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.71971458200000005" green="0.94827073809999995" blue="0.93089950079999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseCell" rowHeight="65" id="8vy-Y2-lKV" customClass="ExpenseTableViewCell" customModule="Expense_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="375" height="65"/>
@@ -753,6 +742,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPq-ao-Dak">
+                                <rect key="frame" x="33" y="263" width="191" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="All Expenses">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="23"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Amc-CG-fkN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -765,6 +767,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="background1" destination="XUQ-o5-r8U" id="bhm-CR-p2U"/>
                         <outlet property="expenseTable" destination="rvg-TI-ifF" id="ype-99-gWs"/>
                         <outlet property="totalExpenses" destination="5dp-vT-axF" id="DhM-2s-bUi"/>
                         <segue destination="xW9-aF-tAb" kind="show" identifier="ExpenseToEdit" id="kH5-Dg-0eB"/>
@@ -1053,7 +1056,6 @@
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="house" catalog="system" width="128" height="106"/>
-        <image name="logo" width="1201" height="1059"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

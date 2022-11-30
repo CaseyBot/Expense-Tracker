@@ -103,27 +103,16 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        summaryBills.count
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
+         return summaryBills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell", for: indexPath)
-        summaryTable.layer.cornerRadius = 5
-        cell.layer.cornerRadius = 5
-        cell.layer.shadowOpacity  = 0.23
-        cell.layer.shadowRadius = 4
-        cell.layer.shadowColor =  UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width:0, height: 0)
-        cell.backgroundColor = .clear
-        
-        cell.layer.masksToBounds = false
+
             //cell.delegate = self
         let exp = cell.viewWithTag(10) as! UILabel
         let amount = cell.viewWithTag(11) as! UILabel
@@ -176,16 +165,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
         }
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.contentView.layer.masksToBounds = true
-        
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
-    }
+
 }
