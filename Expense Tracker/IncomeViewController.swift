@@ -12,9 +12,10 @@ class IncomeViewController: UIViewController  {
     var bills:[Income] = []
     var selectedIn = Income()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-   
+    var gradient = CAGradientLayer()
     @IBOutlet weak var totalIncome: UILabel!
     
+    @IBOutlet weak var background: UITextView!
     @IBOutlet weak var incomeTable: UITableView!
     func reloadData(){
         fetchBills()
@@ -42,7 +43,7 @@ class IncomeViewController: UIViewController  {
             income += incomeBill.amount
         }
         totalIncome.text = "$\(round(income*100)/100)"
-        self.incomeTable.separatorStyle = UITableViewCell.SeparatorStyle.none
+
         
         // Do any additional setup after loading the view.
         
@@ -80,9 +81,26 @@ class IncomeViewController: UIViewController  {
 
 //Configure the tableView rows to the expense count and the size of the table cells to 100  then return it
 extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if bills.count == 0{
+            let image = UIImage(named: "income")
+            let noDataImage = UIImageView(image: image)
+            noDataImage.frame = CGRect(x: 0, y: 0, width: incomeTable.bounds.width, height: incomeTable.bounds.height)
+            noDataImage.contentMode = .scaleAspectFit
+            noDataImage.layer.opacity = 0.3
+            incomeTable.backgroundView = noDataImage
+            incomeTable.separatorStyle = .none
+
+        }else{
+            incomeTable.backgroundView = nil
+            incomeTable.separatorStyle = .singleLine
+            
+        }
+
         return bills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -91,7 +109,6 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
     //Return the incomeCell with the correct tags and labels, format the date and return the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath)
-        
             //cell.delegate = self
         let exp = cell.viewWithTag(7) as! UILabel
         let amount = cell.viewWithTag(9) as! UILabel
@@ -139,6 +156,5 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
        selectedIn = bills[indexPath.row]
        self.performSegue(withIdentifier: "IncomeToEdit", sender: self)
    }
-    
-    
+
 }

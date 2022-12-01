@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var expenseAmount: UILabel!
     @IBOutlet weak var incomeAmount: UILabel!
     @IBOutlet weak var summaryTable: UITableView!
+    @IBOutlet weak var progressBar: UIProgressView!
+    
+    @IBOutlet weak var bottomHalf: UITextView!
     var expenseBills:[Expense] = []
     var incomeBills:[Income] = []
     var summaryBills:[Summary] = []
@@ -61,22 +64,23 @@ class ViewController: UIViewController {
     //Function to clear database and restart
     
     func deleteAllData(entity: String) {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-    fetchRequest.returnsObjectsAsFaults = false
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
 
-    do
-    {
-        let results = try managedContext.fetch(fetchRequest)
-        for managedObject in results
+        do
         {
-            let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-            managedContext.delete(managedObjectData)
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Delete all data in \(entity) error : \(error) \(error.userInfo)")
         }
-    } catch let error as NSError {
-        print("Delete all data in \(entity) error : \(error) \(error.userInfo)")
-    }
+        progressBar.layer.cornerRadius = 10
     }
     
     // Reloads table when screen appears
@@ -165,15 +169,28 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return summaryBills.count
+        if summaryBills.count == 0{
+            let image = UIImage(named: "main")
+            let noDataImage = UIImageView(image: image)
+            noDataImage.frame = CGRect(x: 0, y: 0, width: summaryTable.bounds.width, height: summaryTable.bounds.height)
+            noDataImage.contentMode = .scaleAspectFit
+            noDataImage.layer.opacity = 0.3
+            summaryTable.backgroundView = noDataImage
+            summaryTable.separatorStyle = .none
+
+        }else{
+            summaryTable.backgroundView = nil
+            summaryTable.separatorStyle = .singleLine
+            
+        }
+         return summaryBills.count
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell", for: indexPath)
-        
+
             //cell.delegate = self
         let exp = cell.viewWithTag(10) as! UILabel
         let amount = cell.viewWithTag(11) as! UILabel
@@ -199,7 +216,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         default:
             cell.backgroundColor = .white
         }
-       
         return cell
         
    
@@ -226,6 +242,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
         }
     }
-    
 
 }
