@@ -7,7 +7,9 @@
 
 import UIKit
 import CoreData
-// transfer current variables from the main view
+
+//MARK:  transfer current variables from the main view
+
 class AddBudgetController: UIViewController {
     
     var bills:[Budget] = []
@@ -15,7 +17,9 @@ class AddBudgetController: UIViewController {
     @IBOutlet weak var title1: UITextField!
     @IBOutlet weak var amount1: UITextField!
     var validationResult = true
-    //add function button that saves the new budget entity and append it to the expense object then create the alert for the budget that are added then return to the prior controller
+    
+    //MARK: add function button that saves the new budget entity and append it to the expense object then create the alert for the budget that are added then return to the prior controller
+    
     @IBAction func add(_ sender: Any) {
         if (title1.text?.isEmpty)! || (amount1.text?.isEmpty)!{
             displayAlert()
@@ -66,7 +70,8 @@ class AddBudgetController: UIViewController {
         
         self.validationResult = true
     }
-    //Create the budget entity and context then viewDidLoad and fetch bills function
+    
+    //MARK: Create the budget entity and context then viewDidLoad and fetch bills function
     
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -76,9 +81,10 @@ class AddBudgetController: UIViewController {
         fetchBills()
         fetchExpense()
         print(bills)
-        // Do any additional setup after loading the view.
     }
-    //Save the context and fetch the budget entities and save to the core data
+    
+    //MARK: Save the context and fetch the budget entities and save to the core data
+    
     func saveBills(){
         do {
             try context.save()
@@ -90,6 +96,8 @@ class AddBudgetController: UIViewController {
         
     }
     
+    //MARK: Validate input text
+    
     func validateString(name:String)->Bool{
         let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
         let result = name.range(
@@ -99,6 +107,8 @@ class AddBudgetController: UIViewController {
         let validate = (result != nil)
         return validate
     }
+    
+    //MARK: Validate input price
     
     func validatePrice(price:String)->Bool{
         let priceRegex = #"(\-?\d+\.?\d{0,2})"#
@@ -110,9 +120,9 @@ class AddBudgetController: UIViewController {
         return validate
     }
     
+    //MARK: Fetch budget the data from Core Data to displau in the tableview
+    
     func fetchBills(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
-        //Fetch the data from Core Data to displau in the tableview
-        //context.
         do{
             bills = try context.fetch(request)
         }catch{
@@ -121,9 +131,9 @@ class AddBudgetController: UIViewController {
         
     }
     
+    //MARK: Fetch the expense data from Core Data to update budget
+    
     func fetchExpense(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
-        //Fetch the data from Core Data to displau in the tableview
-        //context.
         do{
             expense = try context.fetch(request)
             
@@ -132,7 +142,9 @@ class AddBudgetController: UIViewController {
         }
         
     }
-    //Create alert with done button and navigate back to the budget view controller in main
+    
+    //MARK: Create alert with done button and navigate back to the budget view controller in main
+    
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
@@ -140,11 +152,15 @@ class AddBudgetController: UIViewController {
         }))
         self.present(alert, animated: true, completion:nil)}
     
+    //MARK: Alert for invalid input
+    
     func showAlert(){
         let alert = UIAlertController(title:"invalid input!", message:"Make sure your input is correct",preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Dismiss",style:.cancel))
         present(alert, animated:true)
     }
+    
+    //MARK: Alert for missing input
     
     func displayAlert(){
         

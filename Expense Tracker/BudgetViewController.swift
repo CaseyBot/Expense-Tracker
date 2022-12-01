@@ -8,7 +8,8 @@
 import UIKit
 import CoreData
 
-//create variables for the budget entities and context, then delegate the delgate and dataSource to self and reload the data
+//MARK: create variables for the budget entities and context, then delegate the delgate and dataSource to self and reload the data
+
 class BudgetViewController: UIViewController {
     
     @IBOutlet weak var budgetTable: UITableView!
@@ -22,35 +23,36 @@ class BudgetViewController: UIViewController {
         budgetTable.delegate = self
         budgetTable.dataSource = self
         fetchBills()
-//        fetchExpense()
         budgetTable.reloadData()
         self.budgetTable.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
-    //reloadData reloads the budgetTable
+    //MARK: reloadData reloads the budgetTable
     func reloadData(){
         fetchBills()
-//        fetchExpense()
         DispatchQueue.main.async(execute:{self.budgetTable.reloadData()})
     }
     
-    //Prepare the segue for the budgetToEdit and send the selected budget item
+    //MARK: Prepare the segue for the budgetToEdit and send the selected budget item
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //MARK: Get the new view controller using segue.destination.
+        //MARK: Pass the selected object to the new view controller.
         if segue.identifier == "budgetToEdit"{
             let detailed_view = segue.destination as! EditBudgetController
             detailed_view.selectedBill = selectedBill
         }
     }
     
-    //Create the viewDidAppear load and reload the core data and table view
+    //MARK: Create the viewDidAppear load and reload the core data and table view
+    
     override func viewDidAppear(_ animated: Bool) {
         reloadData()
         self.budgetTable.reloadData()
     }
     
-    //Fetchthe budget context and reload the budgetTable then print if there is an error
+    //MARK: Fetch the budget context and reload the budgetTable then print if there is an error
+    
     func fetchBills(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
         //Fetch the data from Core Data to display in the tableview
         //context.
@@ -67,7 +69,9 @@ class BudgetViewController: UIViewController {
     
     
 }
-    //extension to edit the tableView with the row count and the size to 100 then return the data
+
+    //MARK: extension to edit the tableView with the row count and the size to 100 then return the data
+
     extension BudgetViewController: UITableViewDelegate, UITableViewDataSource{
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,10 +80,8 @@ class BudgetViewController: UIViewController {
                 let noDataImage = UIImageView(image: image)
                 noDataImage.frame = CGRect(x: 20, y: 0, width: budgetTable.bounds.width, height: budgetTable.bounds.height)
                 noDataImage.contentMode = .scaleAspectFit
-                noDataImage.layer.opacity = 0.2
+                noDataImage.layer.opacity = 0.04
                 budgetTable.addSubview(noDataImage)
-
-                //summaryTable.backgroundView = noDataImage
                 budgetTable.separatorStyle = .none
 
             }else{
@@ -94,7 +96,9 @@ class BudgetViewController: UIViewController {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 80
         }
-        //Change the labels in budgetcell  then show the core data in these labels in the cells
+        
+        //MARK: Change the labels in budgetcell  then show the core data in these labels in the cells
+        
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "budgetcell", for: indexPath)
             let exp = cell.viewWithTag(9) as! UILabel
@@ -117,32 +121,29 @@ class BudgetViewController: UIViewController {
 
         }
 
-        //Delete function to delete the current row from the core data then print possible errors and reload the data
+        //MARK: Delete function to delete the current row from the core data then print possible errors and reload the data
+        
          func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
              var expense = self.bills![indexPath.row]
 
 
             if editingStyle == UITableViewCell.EditingStyle.delete{
                 budgetTable.beginUpdates()
-
                 context.delete(expense)
-
                 do{
                     try context.save()
                 }catch {
                     print("Error While deleting")
                 }
                 budgetTable.endUpdates()
-
                 self.viewDidLoad()
-
             }
         }
-        //Prepare the segue for row selected with budgetToEdit and send current row 
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //MARK: Prepare the segue for row selected with budgetToEdit and send current row
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             selectedBill = bills![indexPath.row]
             self.performSegue(withIdentifier: "budgetToEdit", sender: self)
-            
         }
     }

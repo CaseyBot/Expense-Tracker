@@ -21,7 +21,7 @@ class AddExpenseController: UIViewController{
     
     @IBOutlet weak var expenseType: UITextField!
    
-    //Created  object array to later change for expense and for overall summary, and the context
+    //MARK: Created  object array to later change for expense and for overall summary, and the context
     
     var bills:[Expense] = []
     var summary:[Summary] = []
@@ -35,7 +35,9 @@ class AddExpenseController: UIViewController{
         fetchBudget()
 
     }
-    //Button to add expense and save the new expense, then save it to the summary entity to show in the home view
+    
+    //MARK: Button to add expense and save the new expense, then save it to the summary entity to show in the home view
+    
     @IBAction func addExpenseButton(_ sender: Any) {
         if (expenseTitle.text?.isEmpty)! || (expenseAmount.text?.isEmpty)! || (expenseType.text?.isEmpty)!{
             displayAlert()
@@ -82,6 +84,8 @@ class AddExpenseController: UIViewController{
 
     }
     
+    //MARK: Validate input text
+    
     func validateString(name:String)->Bool{
         let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
         let result = name.range(
@@ -92,6 +96,8 @@ class AddExpenseController: UIViewController{
         return validate
     }
     
+    //MARK: Validate input text
+    
     func validatePrice(price:String)->Bool{
         let priceRegex = #"(\-?\d+\.?\d{0,2})"#
         let result = price.range(
@@ -101,7 +107,8 @@ class AddExpenseController: UIViewController{
         let validate = (result != nil)
         return validate
     }
-    //Save the context expense in the core data
+    
+    //MARK: Save the context expense in the core data
 
     func saveBills(){
         do {
@@ -111,9 +118,10 @@ class AddExpenseController: UIViewController{
                     print("Error saving context \(error)")
                 }
         self.fetchBills()
-        
     }
-    //Fetch the expense context
+    
+    //MARK: Fetch the expense context
+    
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
@@ -125,6 +133,9 @@ class AddExpenseController: UIViewController{
         }
         
     }
+    
+    //MARK: Save budget details to database
+    
     func saveBudget(){
         do {
                     try context.save()
@@ -135,7 +146,9 @@ class AddExpenseController: UIViewController{
         self.fetchBudget()
         
     }
-    //Fetch the expense context
+    
+    //MARK: Fetch the expense context
+    
     func fetchBudget(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
@@ -148,7 +161,7 @@ class AddExpenseController: UIViewController{
         
     }
 
-//create an alert for adding expense  and navigate back to the expense view
+    //MARK: create an alert for adding expense  and navigate back to the expense view
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
         //alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{_ in self.dismiss(animated: true, completion:nil)}))
@@ -157,11 +170,15 @@ class AddExpenseController: UIViewController{
         }))
         self.present(alert, animated: true, completion:nil)}
 
+    //MARK: Alert for invalid input
+    
     func showAlert(){
         let alert = UIAlertController(title:"invalid input!", message:"Make sure your input is correct",preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Dismiss",style:.cancel))
         present(alert, animated:true)
     }
+    
+    //MARK: Alert for empty input
     
     func displayAlert(){
         let missingInformationAlert = UIAlertController(title: "Missing Information!",

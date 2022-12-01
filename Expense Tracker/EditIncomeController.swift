@@ -7,7 +7,9 @@
 
 import UIKit
 import CoreData
-//create the object variables and variables for the title, amount, and data from the text fields
+
+//MARK: create the object variables and variables for the title, amount, and data from the text fields
+
 class EditIncomeController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedBill = Income()
@@ -19,16 +21,19 @@ class EditIncomeController: UIViewController {
     @IBOutlet weak var amount1: UITextField!
     
     @IBOutlet weak var date1: UIDatePicker!
-    //show the correct title, amount, and date as the placeholder in the edit income view
+    
+    //MARK: show the correct title, amount, and date as the placeholder in the edit income view
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         title1.text = selectedBill.title
         amount1.text = "\(selectedBill.amount)"
         date1.date = selectedBill.date!
-        // Do any additional setup after loading the view.
     }
-    //When editIncome button is clicked the changeMade function is called which will take the data entered in the text fields. Search by the title, take the first result and change the title, amount, date and save into the context. Create an alert and send back to income controller
+    
+    //MARK: When editIncome button is clicked the changeMade function is called which will take the data entered in the text fields. Search by the title, take the first result and change the title, amount, date and save into the context. Create an alert and send back to income controller
+    
     @IBAction func editIncome(_ sender: Any) {
         if (title1.text?.isEmpty)! || (amount1.text?.isEmpty)!{
             displayAlert()
@@ -45,6 +50,9 @@ class EditIncomeController: UIViewController {
         self.validationResult =  true
 
     }
+    
+    //MARK: Validate input text
+    
     func validateString(name:String)->Bool{
         let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
         let result = name.range(
@@ -55,6 +63,8 @@ class EditIncomeController: UIViewController {
         return validate
     }
     
+    //MARK: Validate input price
+    
     func validatePrice(price:String)->Bool{
         let priceRegex = #"(\-?\d+\.?\d{0,2})"#
         let result = price.range(
@@ -64,6 +74,9 @@ class EditIncomeController: UIViewController {
         let validate = (result != nil)
         return validate
     }
+    
+    //MARK: Track the changes made and populate them in Core Data
+    
     func changeMade(){
         title2 = title1.text!
         amount2 = Double(amount1.text!)!
@@ -86,16 +99,18 @@ class EditIncomeController: UIViewController {
         try context.save()
         }catch{}
         createAlert(title:"Editted Income",msg:"Your income has been successfully editted!")
-
-
     }
-    //Create alert with a Done button then send back to the income controller
+    
+    //MARK: Create alert with a Done button then send back to the income controller
+    
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
             _=self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true, completion:nil)}
+    
+    //MARK: Create alert for invalid input
     
     func displayAlert(){
         let missingInformationAlert = UIAlertController(title: "Missing Information!",
@@ -106,14 +121,14 @@ class EditIncomeController: UIViewController {
         self.present(missingInformationAlert, animated: true, completion: nil)
     }
     
+    //MARK: Create alert for empty input
+    
     func showAlert(){
         let alert = UIAlertController(title:"invalid input!", message:"Make sure your input is correct",preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Dismiss",style:.cancel))
         present(alert, animated:true)
     }
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
