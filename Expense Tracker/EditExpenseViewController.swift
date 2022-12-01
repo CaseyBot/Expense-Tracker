@@ -7,7 +7,9 @@
 
 import UIKit
 import CoreData
-//Create the objects from expense and context, create the variables to insert into the core data, transfer over all of the textfields from the main view
+
+//MARK: Create the objects from expense and context, create the variables to insert into the core data, transfer over all of the textfields from the main view
+
 class EditExpenseViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedBill = Expense()
@@ -21,7 +23,9 @@ class EditExpenseViewController: UIViewController {
     @IBOutlet weak var amount1: UITextField!
     @IBOutlet weak var type1: UITextField!
     @IBOutlet weak var date1: UIDatePicker!
-    //Transfer function from the editChanges button that is clicked
+    
+    //MARK: Transfer function from the editChanges button that is clicked
+    
     @IBAction func editChanges(_ sender: Any) {
         if (title1.text?.isEmpty)! || (type1.text?.isEmpty)! || (amount1.text?.isEmpty)!{
             displayAlert()
@@ -39,7 +43,9 @@ class EditExpenseViewController: UIViewController {
         print("here")
         
     }
-    //In the override viewDidLoad show the information from the core data for the row selected and change if the user decides to.
+    
+    //MARK: In the override viewDidLoad show the information from the core data for the row selected and change if the user decides to.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title1.text = selectedBill.title
@@ -48,6 +54,8 @@ class EditExpenseViewController: UIViewController {
         date1.date = selectedBill.date!
         fetchBudget()
     }
+    
+    //MARK: Validate input text
     
     func validateString(name:String)->Bool{
         let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
@@ -59,6 +67,8 @@ class EditExpenseViewController: UIViewController {
         return validate
     }
     
+    //MARK: Validate input amount
+    
     func validatePrice(price:String)->Bool{
         let priceRegex = #"(\-?\d+\.?\d{0,2})"#
         let result = price.range(
@@ -69,8 +79,9 @@ class EditExpenseViewController: UIViewController {
         return validate
     }
     
+    //MARK: Fetch the budget data from Core Data
+    
     func fetchBudget(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
-        //Fetch the budget data from Core Data
         do{
             budget = try context.fetch(request)
         }catch{
@@ -78,7 +89,9 @@ class EditExpenseViewController: UIViewController {
         }
         
     }
-    //Get the text from the labels, request the expense object, search by title then take the first result and change the title, amount, type, and date as to what the user wants. Then saves the context and creates an alert. Send back to the expense controller
+    
+    //MARK: Get the text from the labels, request the expense object, search by title then take the first result and change the title, amount, type, and date as to what the user wants. Then saves the context and creates an alert. Send back to the expense controller
+    
     func changeMade(){
         title2 = title1.text!
         amount2 = Double(amount1.text!)!
@@ -147,13 +160,17 @@ class EditExpenseViewController: UIViewController {
         
 
     }
-    //Create the alert for done and dismiss the the alert when it is clicked
+    
+    //MARK: Create the alert for done and dismiss the the alert when it is clicked
+    
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
             _=self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true, completion:nil)}
+    
+    //MARK: Alert for invalid input
     
     func displayAlert(){
         let missingInformationAlert = UIAlertController(title: "Missing Information!",
@@ -163,6 +180,8 @@ class EditExpenseViewController: UIViewController {
         missingInformationAlert.addAction(cancelAction)
         self.present(missingInformationAlert, animated: true, completion: nil)
     }
+    
+    //MARK: Alert for empty input
     
     func showAlert(){
         let alert = UIAlertController(title:"invalid input!", message:"Make sure your input is correct",preferredStyle: .alert)

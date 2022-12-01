@@ -10,7 +10,7 @@ import CoreData
 
 class AddincomeController: UIViewController {
     
-    //Add all of the income inputs and add the objects for expenses and summary entities and context
+    //MARK: Add all of the income inputs and add the objects for expenses and summary entities and context
     @IBOutlet weak var incomeTitle: UITextField!
     @IBOutlet weak var incomeAmount: UITextField!
     @IBOutlet weak var incomeDate: UIDatePicker!
@@ -22,9 +22,9 @@ class AddincomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBills()
-        // Do any additional setup after loading the view.
     }
-    //Add Income Button for new expense for the expense entity and also add it to the summary entity. Create the alert after adding
+    
+    //MARK: Add Income Button for new expense for the expense entity and also add it to the summary entity. Create the alert after adding
     @IBAction func addIncomeButton(_ sender: Any) {
         if (incomeTitle.text?.isEmpty)! || (incomeAmount.text?.isEmpty)!{
             displayAlert()
@@ -50,7 +50,9 @@ class AddincomeController: UIViewController {
         self.validationResult = true
         
     }
-    //Save bills  into context and fetch the income object
+    
+    //MARK: Save bills  into context and fetch the income object
+    
     func saveBills(){
         do {
             try context.save()
@@ -59,6 +61,9 @@ class AddincomeController: UIViewController {
         }
         
     }
+    
+    //MARK: Fetch Income Records
+    
     func fetchBills(with request: NSFetchRequest<Income> = Income.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
@@ -68,6 +73,8 @@ class AddincomeController: UIViewController {
             print(error)
         }
     }
+    
+    //MARK: Validate input text
     
     func validateString(name:String)->Bool{
         let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
@@ -79,6 +86,8 @@ class AddincomeController: UIViewController {
         return validate
     }
     
+    //MARK: Validate input amount
+    
     func validatePrice(price:String)->Bool{
         let priceRegex = #"(\-?\d+\.?\d{0,2})"#
         let result = price.range(
@@ -88,9 +97,9 @@ class AddincomeController: UIViewController {
         let validate = (result != nil)
         return validate
     }
-    //Save into summary context and fetch the summary object and save it as well
     
-    //Create alert with Done button and send back to income view controller
+    //MARK: Create alert with Done button and send back to income view controller
+    
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Done",style:.cancel,handler:{ (action: UIAlertAction!) in
@@ -98,11 +107,15 @@ class AddincomeController: UIViewController {
         }))
         self.present(alert, animated: true, completion:nil)}
     
+    //MARK: Show alert when invalid input is entered
+    
     func showAlert(){
         let alert = UIAlertController(title:"Invalid Input!", message:"Make sure your input is correct",preferredStyle: .alert)
         alert.addAction(UIAlertAction(title:"Dismiss",style:.cancel))
         present(alert, animated:true)
     }
+    
+    //MARK: Show alert when input fileds are empty
     
     func displayAlert(){
         
