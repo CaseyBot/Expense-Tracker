@@ -88,9 +88,9 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         if bills.count == 0{
             let image = UIImage(named: "income")
             let noDataImage = UIImageView(image: image)
-            noDataImage.frame = CGRect(x: 0, y: 0, width: incomeTable.bounds.width, height: incomeTable.bounds.height)
+            noDataImage.frame = CGRect(x: 0, y: -60, width: incomeTable.bounds.width, height: incomeTable.bounds.height)
             noDataImage.contentMode = .scaleAspectFit
-            noDataImage.layer.opacity = 0.3
+            noDataImage.layer.opacity = 0.2
             incomeTable.addSubview(noDataImage)
 
             //incomeTable.backgroundView = noDataImage

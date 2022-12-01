@@ -107,7 +107,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         if bills!.count == 0{
 
             noDataImage.frame = CGRect(x: 0, y: -60, width: expenseTable.bounds.width, height: expenseTable.bounds.height)
-            noDataImage.layer.opacity = 0.3
+            noDataImage.layer.opacity = 0.2
             noDataImage.tag = 100
             noDataImage.contentMode = .scaleAspectFit
             //expenseTable.center = view.center

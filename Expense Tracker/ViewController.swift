@@ -191,7 +191,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let noDataImage = UIImageView(image: image)
             noDataImage.frame = CGRect(x: 0, y: 0, width: summaryTable.bounds.width, height: summaryTable.bounds.height)
             noDataImage.contentMode = .scaleAspectFit
-            noDataImage.layer.opacity = 0.3
+            noDataImage.layer.opacity = 0.2
             summaryTable.addSubview(noDataImage)
 
             //summaryTable.backgroundView = noDataImage

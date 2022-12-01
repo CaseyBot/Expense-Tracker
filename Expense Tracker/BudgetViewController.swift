@@ -71,6 +71,24 @@ class BudgetViewController: UIViewController {
     extension BudgetViewController: UITableViewDelegate, UITableViewDataSource{
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            if bills!.count == 0{
+                let image = UIImage(named: "budget")
+                let noDataImage = UIImageView(image: image)
+                noDataImage.frame = CGRect(x: 20, y: 0, width: budgetTable.bounds.width, height: budgetTable.bounds.height)
+                noDataImage.contentMode = .scaleAspectFit
+                noDataImage.layer.opacity = 0.2
+                budgetTable.addSubview(noDataImage)
+
+                //summaryTable.backgroundView = noDataImage
+                budgetTable.separatorStyle = .none
+
+            }else{
+                budgetTable.backgroundView = nil
+                budgetTable.separatorStyle = .none
+                for subview in budgetTable.subviews {
+                    subview.removeFromSuperview()
+                }
+            }
             return bills!.count
          }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
