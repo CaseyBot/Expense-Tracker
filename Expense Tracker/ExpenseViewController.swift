@@ -12,8 +12,8 @@ class ExpenseViewController: UIViewController  {
     //Expense entity to change later and context
     var bills:[Expense]?
     var selectedBill = Expense()
+    var budget:[Budget]?
     @IBOutlet weak var background1: UITextView!
-    
     @IBOutlet weak var background2: UITextView!
     var gradient = CAGradientLayer()
 
@@ -26,6 +26,7 @@ class ExpenseViewController: UIViewController  {
         expenseTable.delegate = self
         expenseTable.dataSource = self
         fetchBills()
+        fetchBudget()
         expenseTable.reloadData()
         var expense = 0.0
         for expenseBill in bills! {
@@ -46,6 +47,7 @@ class ExpenseViewController: UIViewController  {
     //Reload the data for the expense table
     func reloadData(){
         fetchBills()
+        fetchBudget()
         DispatchQueue.main.async(execute:{self.expenseTable.reloadData()})
     }
     
@@ -78,6 +80,18 @@ class ExpenseViewController: UIViewController  {
             print(error)
         }
     }
+    func fetchBudget(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
+        //Fetch the data from Core Data to displau in the tableview
+        //context.
+        do{
+            budget = try context.fetch(request)
+            
+        }catch{
+            print(error)
+        }
+        
+    }
+
 
 }
 
@@ -129,8 +143,29 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
     //Delete function to swipe to the left then reload the table and core data then reload the data
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          var expense = self.bills![indexPath.row]
-
-
+         print(expense.amount)
+         for b in budget!{
+             if b.type == expense.type{
+                 var bill = b
+                 var fetchrequest: NSFetchRequest<Budget> = Budget.fetchRequest()
+                 fetchrequest.predicate = NSPredicate(format: "type = %@",b.type!)
+                 let results = try? context.fetch(fetchrequest)
+                 if results?.count == 0{
+                     bill = Budget(context: context)
+                 }else{
+                     bill = (results?.first)!
+                 }
+                 if (bill.amount + expense.amount) > bill.budget{
+                     bill.amount = bill.budget
+                 }
+                 else{
+                 bill.amount = bill.amount + expense.amount
+                 }
+                 do{
+                 try context.save()
+                 }catch{}
+             }
+         }
         if editingStyle == UITableViewCell.EditingStyle.delete{
             expenseTable.beginUpdates()
             
@@ -147,6 +182,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
                 print("Error While deleting")
             }
             expenseTable.endUpdates()
+            
             //tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             self.viewDidLoad()
 

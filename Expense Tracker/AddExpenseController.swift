@@ -7,12 +7,13 @@
 
 import UIKit
 import CoreData
+import Foundation
 
-class AddExpenseController: UIViewController {
+
+class AddExpenseController: UIViewController{
     
     
     @IBOutlet weak var expenseTitle: UITextField!
-    
     
     @IBOutlet weak var expenseAmount: UITextField!
     
@@ -24,34 +25,81 @@ class AddExpenseController: UIViewController {
     
     var bills:[Expense] = []
     var summary:[Summary] = []
+    var budget:[Budget]?
+    var validationResult = true
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBills()
-        fetchSummary()
+        fetchBudget()
+
     }
     //Button to add expense and save the new expense, then save it to the summary entity to show in the home view
     @IBAction func addExpenseButton(_ sender: Any) {
-        let newExpense = Expense(context: self.context)
-        newExpense.title = expenseTitle.text!
-        newExpense.amount = Double(expenseAmount.text!) ?? 0.0
-        newExpense.type = expenseType.text!
-        newExpense.date = expenseDate.date
-        self.bills.append(newExpense)
-        saveBills()
+        if (expenseTitle.text?.isEmpty)! || (expenseAmount.text?.isEmpty)! || (expenseType.text?.isEmpty)!{
+            displayAlert()
+        }
+        if validateString(name: expenseTitle.text!)==false || validateString(name: expenseType.text!)==false || validatePrice(price: String(expenseAmount.text!))==false {
+            self.validationResult = false
+        }
+       
+        if self.validationResult == true{
+            let newExpense = Expense(context: self.context)
+            newExpense.title = expenseTitle.text!
+            newExpense.amount = Double(expenseAmount.text!) ?? 0.0
+            newExpense.type = expenseType.text!
+            newExpense.date = expenseDate.date
+            self.bills.append(newExpense)
+            saveBills()
+            
+            
+            for b in budget!{
+                if b.type == newExpense.type{
+                    var bill = b
+                    var fetchrequest: NSFetchRequest<Budget> = Budget.fetchRequest()
+                    fetchrequest.predicate = NSPredicate(format: "type = %@",b.type!)
+                    let results = try? context.fetch(fetchrequest)
+                    if results?.count == 0{
+                        bill = Budget(context: context)
+                    }else{
+                        bill = (results?.first)!
+                    }
+                    bill.amount = bill.amount - newExpense.amount
+                    do{
+                    try context.save()
+                    }catch{}
+                }
+            }
 
-        let newSummary = Summary(context: self.context)
-        newSummary.title = expenseTitle.text!
-        newSummary.amount = Double(expenseAmount.text!) ?? 0.0
-        newSummary.type = "Expense"
-        newSummary.date = expenseDate.date
-        self.summary.append(newSummary)
-        saveSummary()
-        //self.performSegue(withIdentifier: "seg_expense_to_add", sender: self)
+            createAlert(title:"Added Expense",msg:"Your expense has been successfully added!")
+            
+        }
+        else{
+            showAlert()
+        }
+        self.validationResult = true
 
-        createAlert(title:"Added Expense",msg:"Your expense has been successfully added!")
-
+    }
+    
+    func validateString(name:String)->Bool{
+        let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
+        let result = name.range(
+            of: nameRegex,
+            options: .regularExpression
+        )
+        let validate = (result != nil)
+        return validate
+    }
+    
+    func validatePrice(price:String)->Bool{
+        let priceRegex = #"(\-?\d+\.?\d{0,2})"#
+        let result = price.range(
+            of: priceRegex,
+            options: .regularExpression
+        )
+        let validate = (result != nil)
+        return validate
     }
     //Save the context expense in the core data
 
@@ -77,25 +125,29 @@ class AddExpenseController: UIViewController {
         }
         
     }
-//Save into summary entity for the home view
-    func saveSummary(){
+    func saveBudget(){
         do {
                     try context.save()
+                
                 } catch {
                     print("Error saving context \(error)")
                 }
-        self.fetchSummary()
+        self.fetchBudget()
+        
     }
-  //fetch the summary request entity
-    func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
+    //Fetch the expense context
+    func fetchBudget(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
- 
+        //context.
         do{
-            summary = try context.fetch(request)
+            budget = try context.fetch(request)
+            
         }catch{
             print(error)
         }
+        
     }
+
 //create an alert for adding expense  and navigate back to the expense view
     func createAlert(title: String, msg:String){
         let alert = UIAlertController(title:title, message:msg,preferredStyle: .alert)
@@ -105,5 +157,18 @@ class AddExpenseController: UIViewController {
         }))
         self.present(alert, animated: true, completion:nil)}
 
-
+    func showAlert(){
+        let alert = UIAlertController(title:"invalid input!", message:"Make sure your input is correct",preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss",style:.cancel))
+        present(alert, animated:true)
+    }
+    
+    func displayAlert(){
+        let missingInformationAlert = UIAlertController(title: "Missing Information!",
+                                                        message: "Make sure all the fields are filled",
+                                                        preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        missingInformationAlert.addAction(cancelAction)
+        self.present(missingInformationAlert, animated: true, completion: nil)
+    }
 }
