@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cJ-by-G7H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cJ-by-G7H">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -228,7 +228,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="$300 of $1,275 spent">
                                         <attributes>
-                                            <font key="NSFont" size="16" name="Lato-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="16"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -266,31 +266,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="0EK-0k-Zur">
-                                <rect key="frame" x="47" y="119" width="320" height="565"/>
+                                <rect key="frame" x="47" y="165" width="320" height="566.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Income" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f57-8s-liQ">
-                                        <rect key="frame" x="64" y="0.0" width="192.5" height="42"/>
+                                        <rect key="frame" x="66.5" y="0.0" width="187" height="43.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Change income type" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8r-H4-3oK">
-                                        <rect key="frame" x="63" y="88" width="194" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Income Type" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8r-H4-3oK">
+                                        <rect key="frame" x="60" y="89.5" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="6Yg-2O-aFO"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Change amount" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJe-04-HLX">
-                                        <rect key="frame" x="82" y="168" width="156" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJe-04-HLX">
+                                        <rect key="frame" x="60" y="169.5" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="yqI-Mt-XQ4"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hb3-Sc-N58">
-                                        <rect key="frame" x="0.0" y="248" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="249.5" width="320" height="216"/>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VV9-bn-eah">
-                                        <rect key="frame" x="100" y="510" width="120" height="55"/>
+                                        <rect key="frame" x="100" y="511.5" width="120" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="e78-11-8bA"/>
                                             <constraint firstAttribute="width" constant="120" id="msv-ZE-RRs"/>
@@ -300,7 +306,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Edit">
                                                     <attributes>
-                                                        <font key="NSFont" size="28" name="Lato-Bold"/>
+                                                        <font key="NSFont" metaFont="system" size="28"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -317,8 +323,9 @@
                         <viewLayoutGuide key="safeArea" id="KON-vY-C3n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0EK-0k-Zur" firstAttribute="centerY" secondItem="sNm-3v-lWN" secondAttribute="centerY" constant="-46.5" id="V5f-qb-nWq"/>
+                            <constraint firstItem="0EK-0k-Zur" firstAttribute="centerY" secondItem="sNm-3v-lWN" secondAttribute="centerY" id="5O9-Fi-7r6"/>
                             <constraint firstItem="0EK-0k-Zur" firstAttribute="centerX" secondItem="sNm-3v-lWN" secondAttribute="centerX" id="awa-0z-mgY"/>
+                            <constraint firstItem="0EK-0k-Zur" firstAttribute="centerX" secondItem="sNm-3v-lWN" secondAttribute="centerX" id="y2Q-Js-UVp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8Ib-zX-zhF"/>
@@ -469,36 +476,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-2F-sBu">
-                                <rect key="frame" x="47" y="135" width="320" height="581"/>
+                                <rect key="frame" x="47" y="134.5" width="320" height="582"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMY-3z-CA0">
-                                        <rect key="frame" x="62.5" y="0.0" width="195.5" height="42"/>
+                                        <rect key="frame" x="67.5" y="0.0" width="185.5" height="43"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Add Income">
                                                 <attributes>
-                                                    <font key="NSFont" size="36" name="Lato-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="36"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Income type" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZ5-jz-UZF">
-                                        <rect key="frame" x="69" y="92" width="182" height="34"/>
+                                        <rect key="frame" x="60" y="93" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="h2e-py-utD"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irP-0k-piw">
-                                        <rect key="frame" x="91" y="176" width="138" height="34"/>
+                                        <rect key="frame" x="60" y="177" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="YSL-dj-0UW"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wYe-hG-mLH">
-                                        <rect key="frame" x="0.0" y="260" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="261" width="320" height="216"/>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVD-cW-vsR">
-                                        <rect key="frame" x="100" y="526" width="120" height="55"/>
+                                        <rect key="frame" x="100" y="527" width="120" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="PFg-mo-2BV"/>
                                             <constraint firstAttribute="width" constant="120" id="X9h-Rk-RNX"/>
@@ -508,7 +521,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Add">
                                                     <attributes>
-                                                        <font key="NSFont" size="27" name="Lato-Bold"/>
+                                                        <font key="NSFont" metaFont="system" size="27"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -556,19 +569,28 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Expense Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnb-6o-emi">
-                                        <rect key="frame" x="69" y="78" width="182.5" height="34"/>
+                                        <rect key="frame" x="60" y="78" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="HqJ-lQ-YMb"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Luc-MM-DUQ">
-                                        <rect key="frame" x="91" y="147" width="138" height="34"/>
+                                        <rect key="frame" x="60" y="147" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Qja-Aq-WWf"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Expense Type" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F81-qD-C2K">
-                                        <rect key="frame" x="66.5" y="216" width="187.5" height="34"/>
+                                        <rect key="frame" x="60" y="216" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="gDr-jx-euu"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -587,7 +609,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Add">
                                                     <attributes>
-                                                        <font key="NSFont" size="27" name="Lato-Bold"/>
+                                                        <font key="NSFont" metaFont="system" size="27"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -627,37 +649,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="h3M-Lj-efl">
-                                <rect key="frame" x="47" y="131.5" width="320" height="595"/>
+                                <rect key="frame" x="47" y="150" width="320" height="596.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Expense" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dN-NF-8we">
-                                        <rect key="frame" x="54.5" y="0.0" width="211.5" height="42"/>
+                                        <rect key="frame" x="58.5" y="0.0" width="203" height="43.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UaA-gl-roO">
-                                        <rect key="frame" x="143.5" y="78" width="33" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UaA-gl-roO">
+                                        <rect key="frame" x="60" y="79.5" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="t9C-7w-uYO"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzV-sP-Zb2">
-                                        <rect key="frame" x="143.5" y="148" width="33" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzV-sP-Zb2">
+                                        <rect key="frame" x="60" y="149.5" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="TdD-g9-Lln"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdO-Xo-9gX">
-                                        <rect key="frame" x="143.5" y="218" width="33" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Type" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdO-Xo-9gX">
+                                        <rect key="frame" x="60" y="219.5" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="dM6-II-l3w"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fKz-3N-QRh">
-                                        <rect key="frame" x="0.0" y="288" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="289.5" width="320" height="216"/>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-5P-BhB">
-                                        <rect key="frame" x="100" y="540" width="120" height="55"/>
+                                        <rect key="frame" x="100" y="541.5" width="120" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="CDD-2g-tM1"/>
                                             <constraint firstAttribute="height" constant="55" id="qcF-1c-fCp"/>
@@ -667,7 +698,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Edit">
                                                     <attributes>
-                                                        <font key="NSFont" size="27" name="Lato-Bold"/>
+                                                        <font key="NSFont" metaFont="system" size="27"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -683,8 +714,9 @@
                         <viewLayoutGuide key="safeArea" id="3V5-6g-ymG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="h3M-Lj-efl" firstAttribute="centerX" secondItem="UxT-Gd-Q9Z" secondAttribute="centerX" id="1b1-im-cwR"/>
+                            <constraint firstItem="h3M-Lj-efl" firstAttribute="centerY" secondItem="UxT-Gd-Q9Z" secondAttribute="centerY" id="YuI-e6-G5J"/>
                             <constraint firstItem="h3M-Lj-efl" firstAttribute="centerX" secondItem="UxT-Gd-Q9Z" secondAttribute="centerX" id="lST-Vt-Yf5"/>
-                            <constraint firstItem="h3M-Lj-efl" firstAttribute="centerY" secondItem="UxT-Gd-Q9Z" secondAttribute="centerY" constant="-19.25" id="maw-Xz-bnc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bx1-zR-4FV"/>
@@ -917,17 +949,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="81" translatesAutoresizingMaskIntoConstraints="NO" id="L5L-NK-EQC">
-                                <rect key="frame" x="117.5" y="169" width="179.5" height="409"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="L5L-NK-EQC">
+                                <rect key="frame" x="107" y="290" width="200" height="316"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEy-tS-t4P">
-                                        <rect key="frame" x="0.0" y="0.0" width="179.5" height="43"/>
+                                        <rect key="frame" x="10.5" y="0.0" width="179.5" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NiP-7n-izh">
-                                        <rect key="frame" x="15" y="124" width="149" height="34"/>
+                                        <rect key="frame" x="0.0" y="93" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="hP5-kF-3QM"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -936,13 +971,16 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1s-1f-tWc">
-                                        <rect key="frame" x="20.5" y="239" width="138" height="34"/>
+                                        <rect key="frame" x="0.0" y="177" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="I3D-5M-cBW"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-4C-nRg">
-                                        <rect key="frame" x="29" y="354" width="121" height="55"/>
+                                        <rect key="frame" x="39.5" y="261" width="121" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="SgT-x4-SjK"/>
                                             <constraint firstAttribute="width" constant="121" id="myK-mT-UvJ"/>
@@ -952,7 +990,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Edit">
                                                     <attributes>
-                                                        <font key="NSFont" size="27" name="Lato-Bold"/>
+                                                        <font key="NSFont" metaFont="system" size="27"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -971,7 +1009,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="L5L-NK-EQC" firstAttribute="centerX" secondItem="oqk-n7-AoO" secondAttribute="centerX" id="9MJ-Ig-Chl"/>
-                            <constraint firstItem="L5L-NK-EQC" firstAttribute="centerY" secondItem="oqk-n7-AoO" secondAttribute="centerY" constant="-74.5" id="LPX-rz-J1t"/>
+                            <constraint firstItem="L5L-NK-EQC" firstAttribute="centerX" secondItem="oqk-n7-AoO" secondAttribute="centerX" id="iAb-ak-X4t"/>
+                            <constraint firstItem="L5L-NK-EQC" firstAttribute="centerY" secondItem="oqk-n7-AoO" secondAttribute="centerY" id="z2n-zG-ZEd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="D6c-xl-HjK"/>
@@ -993,29 +1032,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="73" translatesAutoresizingMaskIntoConstraints="NO" id="5y8-ZG-wnA">
-                                <rect key="frame" x="115.5" y="161.5" width="183.5" height="385"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="5y8-ZG-wnA">
+                                <rect key="frame" x="107" y="290" width="200" height="316"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X05-Pg-IeU">
-                                        <rect key="frame" x="0.0" y="0.0" width="183.5" height="43"/>
+                                        <rect key="frame" x="8.5" y="0.0" width="183.5" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-Ue-v3t">
-                                        <rect key="frame" x="17" y="116" width="149" height="34"/>
+                                        <rect key="frame" x="0.0" y="93" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="XAY-5d-hfF"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-JQ-FMH">
-                                        <rect key="frame" x="22.5" y="223" width="138" height="34"/>
+                                        <rect key="frame" x="0.0" y="177" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="ZZs-3g-Hhy"/>
+                                        </constraints>
                                         <color key="textColor" red="0.5176470876" green="0.5647059083" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMl-GF-bCv">
-                                        <rect key="frame" x="31.5" y="330" width="120" height="55"/>
+                                        <rect key="frame" x="40" y="261" width="120" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="X7E-s3-Tax"/>
                                             <constraint firstAttribute="width" constant="120" id="n75-wu-TJG"/>
@@ -1026,7 +1071,7 @@
                                                 <fragment content="Add">
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="27" name="Lato-Bold"/>
+                                                        <font key="NSFont" metaFont="system" size="27"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -1041,8 +1086,9 @@
                         <viewLayoutGuide key="safeArea" id="tmg-1T-tWk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5y8-ZG-wnA" firstAttribute="centerX" secondItem="9ar-Ih-b9y" secondAttribute="centerX" id="SbU-Vg-PrF"/>
                             <constraint firstItem="5y8-ZG-wnA" firstAttribute="centerX" secondItem="9ar-Ih-b9y" secondAttribute="centerX" id="bWn-WE-7kI"/>
-                            <constraint firstItem="5y8-ZG-wnA" firstAttribute="centerY" secondItem="9ar-Ih-b9y" secondAttribute="centerY" constant="-94.25" id="fKW-fb-OTe"/>
+                            <constraint firstItem="5y8-ZG-wnA" firstAttribute="centerY" secondItem="9ar-Ih-b9y" secondAttribute="centerY" id="gME-3T-Jw2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6vJ-Wl-mXy"/>
