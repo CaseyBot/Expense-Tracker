@@ -7,24 +7,30 @@
 
 import UIKit
 import CoreData
+
 //create variables for the budget entities and context, then delegate the delgate and dataSource to self and reload the data
 class BudgetViewController: UIViewController {
+    
     @IBOutlet weak var budgetTable: UITableView!
     var bills:[Budget]?
     var selectedBill = Budget()
+    var expenseBills:[Expense]?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         budgetTable.delegate = self
         budgetTable.dataSource = self
         fetchBills()
+//        fetchExpense()
         budgetTable.reloadData()
         self.budgetTable.separatorStyle = UITableViewCell.SeparatorStyle.none
-        // Do any additional setup after loading the view.
     }
+    
     //reloadData reloads the budgetTable
     func reloadData(){
         fetchBills()
+//        fetchExpense()
         DispatchQueue.main.async(execute:{self.budgetTable.reloadData()})
     }
     
@@ -35,17 +41,18 @@ class BudgetViewController: UIViewController {
         if segue.identifier == "budgetToEdit"{
             let detailed_view = segue.destination as! EditBudgetController
             detailed_view.selectedBill = selectedBill
-            
         }
     }
+    
     //Create the viewDidAppear load and reload the core data and table view
     override func viewDidAppear(_ animated: Bool) {
         reloadData()
         self.budgetTable.reloadData()
     }
+    
     //Fetchthe budget context and reload the budgetTable then print if there is an error
     func fetchBills(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
-        //Fetch the data from Core Data to displau in the tableview
+        //Fetch the data from Core Data to display in the tableview
         //context.
         do{
             
@@ -57,6 +64,8 @@ class BudgetViewController: UIViewController {
             print(error)
         }
     }
+    
+    
 }
     //extension to edit the tableView with the row count and the size to 100 then return the data
     extension BudgetViewController: UITableViewDelegate, UITableViewDataSource{
