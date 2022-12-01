@@ -111,13 +111,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             noDataImage.frame = CGRect(x: 0, y: 0, width: summaryTable.bounds.width, height: summaryTable.bounds.height)
             noDataImage.contentMode = .scaleAspectFit
             noDataImage.layer.opacity = 0.3
-            summaryTable.backgroundView = noDataImage
+            summaryTable.addSubview(noDataImage)
+
+            //summaryTable.backgroundView = noDataImage
             summaryTable.separatorStyle = .none
 
         }else{
             summaryTable.backgroundView = nil
-            summaryTable.separatorStyle = .singleLine
-            
+            summaryTable.separatorStyle = .none
+            for subview in summaryTable.subviews {
+                subview.removeFromSuperview()
+            }
         }
          return summaryBills.count
      }
@@ -131,7 +135,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let exp = cell.viewWithTag(10) as! UILabel
         let amount = cell.viewWithTag(11) as! UILabel
         let date = cell.viewWithTag(12) as! UILabel
-        
+
         let expense = self.summaryBills[indexPath.row]
         exp.text = expense.title
         

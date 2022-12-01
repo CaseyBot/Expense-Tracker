@@ -76,7 +76,6 @@ class IncomeViewController: UIViewController  {
             print(error)
         }
     }
-
 }
 
 //Configure the tableView rows to the expense count and the size of the table cells to 100  then return it
@@ -92,13 +91,18 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
             noDataImage.frame = CGRect(x: 0, y: 0, width: incomeTable.bounds.width, height: incomeTable.bounds.height)
             noDataImage.contentMode = .scaleAspectFit
             noDataImage.layer.opacity = 0.3
-            incomeTable.backgroundView = noDataImage
+            incomeTable.addSubview(noDataImage)
+
+            //incomeTable.backgroundView = noDataImage
             incomeTable.separatorStyle = .none
 
         }else{
-            incomeTable.backgroundView = nil
-            incomeTable.separatorStyle = .singleLine
             
+            incomeTable.backgroundView = nil
+            incomeTable.separatorStyle = .none
+            for subview in incomeTable.subviews {
+                subview.removeFromSuperview()
+            }
         }
 
         return bills.count

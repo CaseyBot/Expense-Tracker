@@ -87,18 +87,27 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let image = UIImage(named: "expense")
+        let noDataImage = UIImageView(image: image)
+
         if bills!.count == 0{
-            let image = UIImage(named: "expense")
-            let noDataImage = UIImageView(image: image)
-            noDataImage.frame = CGRect(x: 0, y: 0, width: expenseTable.bounds.width, height: expenseTable.bounds.height)
+
+            noDataImage.frame = CGRect(x: 0, y: -60, width: expenseTable.bounds.width, height: expenseTable.bounds.height)
             noDataImage.layer.opacity = 0.3
+            noDataImage.tag = 100
             noDataImage.contentMode = .scaleAspectFit
-            expenseTable.backgroundView = noDataImage
+            //expenseTable.center = view.center
+            expenseTable.addSubview(noDataImage)
+
+           // expenseTable.backgroundView = noDataImage
             expenseTable.separatorStyle = .none
-            
+
         }else{
             expenseTable.backgroundView = nil
-            expenseTable.separatorStyle = .singleLine
+            expenseTable.separatorStyle = .none
+            for subview in expenseTable.subviews {
+                subview.removeFromSuperview()
+            }
         }
         return bills!.count
      }
