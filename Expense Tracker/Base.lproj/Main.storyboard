@@ -250,6 +250,7 @@
                         <outlet property="homeView" destination="eMc-Yn-UI5" id="8mu-y3-5vT"/>
                         <outlet property="incomeAmount" destination="kwJ-ku-UqV" id="1R7-3B-Aj9"/>
                         <outlet property="progressBar" destination="0lD-wk-QaR" id="fuF-qf-FYb"/>
+                        <outlet property="progressText" destination="F1G-a9-diD" id="3KI-kc-0lt"/>
                         <outlet property="summaryTable" destination="eMc-Yn-UI5" id="Wfx-d6-Q7Z"/>
                     </connections>
                 </viewController>
