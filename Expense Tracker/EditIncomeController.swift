@@ -14,7 +14,7 @@ class EditIncomeController: UIViewController {
     var title2 = ""
     var amount2 = 0.00
     var date2 = Date()
-    
+    var validationResult = true
     @IBOutlet weak var title1: UITextField!
     @IBOutlet weak var amount1: UITextField!
     
@@ -30,8 +30,39 @@ class EditIncomeController: UIViewController {
     }
     //When editIncome button is clicked the changeMade function is called which will take the data entered in the text fields. Search by the title, take the first result and change the title, amount, date and save into the context. Create an alert and send back to income controller
     @IBAction func editIncome(_ sender: Any) {
+        if (title1.text?.isEmpty)! || (amount1.text?.isEmpty)!{
+            displayAlert()
+        }
+        if validateString(name: title1.text!)==false || validatePrice(price: String(amount1.text!))==false {
+            self.validationResult = false
+        }
+        if self.validationResult == true{
         changeMade()
+        }
+        else{
+            showAlert()
+        }
+        self.validationResult =  true
 
+    }
+    func validateString(name:String)->Bool{
+        let nameRegex = #"^[A-Za-z _][A-Za-z0-9 _]*$"#
+        let result = name.range(
+            of: nameRegex,
+            options: .regularExpression
+        )
+        let validate = (result != nil)
+        return validate
+    }
+    
+    func validatePrice(price:String)->Bool{
+        let priceRegex = #"(\-?\d+\.?\d{0,2})"#
+        let result = price.range(
+            of: priceRegex,
+            options: .regularExpression
+        )
+        let validate = (result != nil)
+        return validate
     }
     func changeMade(){
         title2 = title1.text!
@@ -65,6 +96,21 @@ class EditIncomeController: UIViewController {
             _=self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true, completion:nil)}
+    
+    func displayAlert(){
+        let missingInformationAlert = UIAlertController(title: "Missing Information!",
+                                                        message: "Make sure all the fields are filled",
+                                                        preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        missingInformationAlert.addAction(cancelAction)
+        self.present(missingInformationAlert, animated: true, completion: nil)
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title:"invalid input!", message:"Make sure your input is correct",preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss",style:.cancel))
+        present(alert, animated:true)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

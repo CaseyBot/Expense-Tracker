@@ -16,10 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var summaryTable: UITableView!
     @IBOutlet weak var progressBar: UIProgressView!
     
+    @IBOutlet weak var progressText: UILabel!
     @IBOutlet weak var bottomHalf: UITextView!
     var expenseBills:[Expense] = []
     var incomeBills:[Income] = []
     var summaryBills:[Summary] = []
+    var budgetBills:[Budget] = []
+//    var sumData:[Summary] = []
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func reloadData(){
@@ -34,12 +38,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        summaryTable.delegate = self
 //        summaryTable.dataSource = self
+        progressBar.layer.cornerRadius = 10
         summaryTable.delegate = self
         summaryTable.dataSource = self
         fetchBills()
         fetchIncome()
+        fetchBudget()
         fetchSummary()
-        summaryTable.reloadData()
+        
         var totalIncome = 0.0
         for incomeBill in incomeBills {
             totalIncome += incomeBill.amount
@@ -52,26 +58,71 @@ class ViewController: UIViewController {
         expenseAmount.text = "$\(round(totalExpense*100)/100)"
         incomeAmount.text = "$\(round(totalIncome*100)/100)"
         self.summaryTable.separatorStyle = UITableViewCell.SeparatorStyle.none
-        progressBar.layer.cornerRadius = 10
         
+        var totalBudget = Double(0.0)
+        for budget in budgetBills{
+            totalBudget = totalBudget + budget.amount
+        }
+        
+        var targetAmount = totalBudget - totalExpense
+        if targetAmount>0{
+            progressText.text! = "On Target by $\(targetAmount)"
+            progressBar.progress = (Float(targetAmount)-Float(0.0))/(Float(totalBudget)-Float(0.0))
+        }
+        else{
+            targetAmount = totalExpense-totalBudget
+            progressText.text! = "Off Target by $\(targetAmount)"
+            progressBar.progress = (Float(targetAmount)-Float(0.0))/(Float(totalBudget)-Float(0.0))
+        }
+
+//        deleteAllData(entity: "Expense")
+//        deleteAllData(entity: "Summary")
+//        deleteAllData(entity: "Summary")
+        summaryTable.reloadData()
+       
     }
+    
+    //Function to clear database and restart
+    
+    func deleteAllData(entity: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Delete all data in \(entity) error : \(error) \(error.userInfo)")
+        }
+    }
+    
+    // Reloads table when screen appears
     
     override func viewDidAppear(_ animated: Bool) {
         self.viewDidLoad()
-        reloadData()
+        summaryTable.reloadData()
     }
+    
+    // Fetches expense details
     
     func fetchBills(with request: NSFetchRequest<Expense> = Expense.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
         //context.
         do{
             expenseBills = try context.fetch(request)
-            //print(bills[7].title)
         }catch{
             print(error)
         }
     }
     
+    // Fetch income details
 
     func fetchIncome(with request: NSFetchRequest<Income> = Income.fetchRequest()){
         do{
@@ -85,20 +136,50 @@ class ViewController: UIViewController {
         }
     }
     
-    func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
-        //Fetch the data from Core Data to displau in the tableview
-        //context.
+    func fetchBudget(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
         do{
-            summaryBills = try context.fetch(request)
-            summaryBills.sort(by: { $0.date! > $1.date! })
-
-            DispatchQueue.main.async{
-                self.summaryTable.reloadData()
-            }
-            //print(bills[7].title)
+            budgetBills = try context.fetch(request)
         }catch{
             print(error)
         }
+    }
+    
+    
+    // Fetch account summary to be presented on the main screen
+    
+    func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
+        //Fetch the data from Core Data to displau in the tableview
+        do{
+            var summaryData:[Summary] = []
+
+            for e in expenseBills{
+                let newSummary = Summary(context: self.context)
+                newSummary.amount = e.amount
+                newSummary.title = e.title
+                newSummary.type = e.type
+                newSummary.date = e.date
+                summaryData.append(newSummary)
+            }
+            
+            for e in incomeBills{
+                let newSummary = Summary(context: self.context)
+                newSummary.amount = e.amount
+                newSummary.title = e.title
+                newSummary.type = e.type
+                newSummary.date = e.date
+                summaryData.append(newSummary)
+            }
+            
+            summaryBills = summaryData
+        
+            summaryBills.sort(by: { $0.date! > $1.date! })
+            DispatchQueue.main.async{
+                self.summaryTable.reloadData()
+            }
+        }catch{
+            print(error)
+        }
+        
     }
 }
 
@@ -140,7 +221,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         exp.text = expense.title
         
         date.text = "\(expense.date!.formatted(date: .abbreviated, time: .omitted))"
-        if expense.type == "Expense"{
+        if expense.type != nil{
             amount.textColor = UIColor(red: 191/255.0, green: 32/255.0, blue: 27/255.0, alpha: 1);
             amount.text = "-$\(expense.amount)"
         }
@@ -170,7 +251,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //expenseTable.reloadData()
             do{
                 try context.save()
-                reloadData()
                 summaryTable.reloadData()
                 //self.expenseTable.deleteRows(at: [indexPath], with: .automatic)
                 
