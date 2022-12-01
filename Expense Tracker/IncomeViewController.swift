@@ -103,6 +103,7 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
             for subview in incomeTable.subviews {
                 subview.removeFromSuperview()
             }
+            
         }
 
         return bills.count
