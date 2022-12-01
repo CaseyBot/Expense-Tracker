@@ -16,10 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var summaryTable: UITableView!
     @IBOutlet weak var progressBar: UIProgressView!
     
+    @IBOutlet weak var progressText: UILabel!
     @IBOutlet weak var bottomHalf: UITextView!
     var expenseBills:[Expense] = []
     var incomeBills:[Income] = []
     var summaryBills:[Summary] = []
+    var budgetBills:[Budget] = []
 //    var sumData:[Summary] = []
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -36,10 +38,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        summaryTable.delegate = self
 //        summaryTable.dataSource = self
+        progressBar.layer.cornerRadius = 10
         summaryTable.delegate = self
         summaryTable.dataSource = self
         fetchBills()
         fetchIncome()
+        fetchBudget()
         fetchSummary()
         
         var totalIncome = 0.0
@@ -54,6 +58,23 @@ class ViewController: UIViewController {
         expenseAmount.text = "$\(round(totalExpense*100)/100)"
         incomeAmount.text = "$\(round(totalIncome*100)/100)"
         self.summaryTable.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        var totalBudget = Double(0.0)
+        for budget in budgetBills{
+            totalBudget = totalBudget + budget.amount
+        }
+        
+        var targetAmount = totalBudget - totalExpense
+        if targetAmount>0{
+            progressText.text! = "On Target by $\(targetAmount)"
+            progressBar.progress = (Float(targetAmount)-Float(0.0))/(Float(totalBudget)-Float(0.0))
+        }
+        else{
+            targetAmount = totalExpense-totalBudget
+            progressText.text! = "Off Target by $\(targetAmount)"
+            progressBar.progress = (Float(targetAmount)-Float(0.0))/(Float(totalBudget)-Float(0.0))
+        }
+
 //        deleteAllData(entity: "Expense")
 //        deleteAllData(entity: "Summary")
 //        deleteAllData(entity: "Summary")
@@ -80,7 +101,6 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print("Delete all data in \(entity) error : \(error) \(error.userInfo)")
         }
-        progressBar.layer.cornerRadius = 10
     }
     
     // Reloads table when screen appears
@@ -116,22 +136,19 @@ class ViewController: UIViewController {
         }
     }
     
+    func fetchBudget(with request: NSFetchRequest<Budget> = Budget.fetchRequest()){
+        do{
+            budgetBills = try context.fetch(request)
+        }catch{
+            print(error)
+        }
+    }
+    
+    
     // Fetch account summary to be presented on the main screen
     
     func fetchSummary(with request: NSFetchRequest<Summary> = Summary.fetchRequest()){
         //Fetch the data from Core Data to displau in the tableview
-        //context.
-//        do{
-//            summaryBills = try context.fetch(request)
-//            summaryBills.sort(by: { $0.date! > $1.date! })
-//            DispatchQueue.main.async{
-//                self.summaryTable.reloadData()
-//            }
-//            //print(bills[7].title)
-//        }catch{
-//            print(error)
-//        }
-        
         do{
             var summaryData:[Summary] = []
 
